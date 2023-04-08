@@ -60,8 +60,8 @@ const InvitationProtected = () => {
         </div>
         <div className={styles.sec}>
           <div className={styles.subtitle}>Lugar</div>
-          <div className={styles.text}>Salón - dirección</div>
-          <WhereButton title={'¿CÓMO LLEGAR?'}/>         
+          <div className={styles.text}>Salón Vallejos Eventos</div>
+          <WhereButton title={'¿CÓMO LLEGAR?'} click={()=>router.push('https://www.google.com/maps/place/Salon+Vallejos+Eventos/@-23.1387456,-64.3309091,17z/data=!3m1!4b1!4m6!3m5!1s0x940ff5fa7d31adaf:0xe51df841fd5caad!8m2!3d-23.1387506!4d-64.3283342!16s%2Fg%2F11f29y22x7')}/>         
         </div>
       </div>
       <div className={styles.confirm}>
