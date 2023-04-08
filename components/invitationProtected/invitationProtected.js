@@ -47,7 +47,7 @@ const InvitationProtected = () => {
           <div className={styles.dressCode}>
             <div className={styles.dressTitle}>Dress Code</div>
             <div className={styles.bun}></div>
-            <div className={styles.code}>Elegante</div>
+            <div className={styles.code}>Gala</div>
           </div>
         </div>
       </div>

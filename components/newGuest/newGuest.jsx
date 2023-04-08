@@ -193,8 +193,10 @@ const NewGuest = () => {
               })
             : null}
         </div>
-        <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
-        <button className={styles.button} onClick={()=>{router.push("/invitation")}}>Ver Invitación</button>
+        <div className={styles.divButtons}>
+          <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
+          <button className={styles.button} onClick={()=>{router.push("/invitation")}}>Ver Invitación</button>
+        </div>
       </div>
     </div>
   );
