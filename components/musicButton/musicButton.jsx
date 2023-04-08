@@ -13,7 +13,7 @@ export default function Music() {
 
     if (!isPlaying) {
       sound.current = new Howl({
-        src: ['/utils/flowers.mp3'],
+        src: ['/utils/Even If The Sky Is Falling Down - Candelion ft. Cara Dee.mp3'],
         onend: function() {
           setIsPlaying(false);
         },
