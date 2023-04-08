@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import styles from './countDown.module.css'
 
 const Countdown = ({ date }) => {
   const [days, setDays] = useState(0);
@@ -20,22 +21,22 @@ const Countdown = ({ date }) => {
   }, [date]);
 
   return (
-    <div style={{display:"flex", justifyContent:"space-between", width:"100%", padding:"60px"}}>
+    <div className={styles.container}>
       <div style={{display:"flex", flexDirection: "column", alignItems: "center"}}>
-        <div>{days}</div>
-        <div>días</div>
+        <div className={styles.num}>{days}</div>
+        <div className={styles.word}>días</div>
       </div>
       <div style={{display:"flex", flexDirection: "column", alignItems: "center"}}>
-        <div>{hours}</div>
-        <div>hs</div>
+        <div className={styles.num}>{hours}</div>
+        <div className={styles.word}>hs</div>
       </div>
       <div style={{display:"flex", flexDirection: "column", alignItems: "center"}}>
-        <div>{minutes}</div>
-        <div>min</div>
+        <div className={styles.num}>{minutes}</div>
+        <div className={styles.word}>min</div>
       </div>
       <div style={{display:"flex", flexDirection: "column", alignItems: "center"}}>
-        <div>{seconds}</div>
-        <div>seg</div>
+        <div className={styles.num}>{seconds}</div>
+        <div className={styles.word}>seg</div>
       </div>
     </div>
   );

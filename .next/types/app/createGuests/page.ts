@@ -1,4 +1,4 @@
-// File: E:\MARI\DR full code\PROYECTOS\Invitations\xv-invitation\client\app\createGuests\page.jsx
+// File: E:\MARI\DR full code\PROYECTOS\Invitations\xv-invitation\xv-invitation-front\app\createGuests\page.jsx
 import * as entry from '../../../../app/createGuests/page'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 

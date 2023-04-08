@@ -5,7 +5,19 @@ html,
 body{
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: PrimaryFont, SecondaryFont, TertiaryFont, sans-serif;
+}
+@font-face {
+    font-family: PrimaryFont;
+    src: url(/_next/static/media/BreeSerif-Regular.c2c97787.ttf);
+}
+@font-face {
+    font-family: SecondaryFont;
+    src: url(/_next/static/media/Galantis.5e8caa0c.otf);
+}
+@font-face {
+    font-family: TertiaryFont;
+    src: url(/_next/static/media/senlot-serif-ext-regular.69dc0150.otf);
 }
 a{
     color: inherit;
@@ -14,12 +26,23 @@ a{
 *{
     box-sizing: border-box;
 }
-@media(prefers-color-scheme: dark){
+:root{
+    --background-color: #ffffff;
+    --primary-color:#e2b7c1 ;
+    --secondary-color: #ddd;
+    --tertiary-color:#333;
+    --alternate-color: #c7b6d7;
+    --font-primary-color: #000000;
+    --border-color: #e7c6c6;
+
+}
+
+@media(prefers-color-scheme: light){
     html{
-        color-scheme: dark;
+        color-scheme: light;
     }
     body{
-        color: white;
-        background: black;
+        background: #ffffff;
+        color: black;
     }
 }

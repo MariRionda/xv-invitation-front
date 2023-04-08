@@ -1,0 +1,26 @@
+.buttonOff{
+
+    position: fixed;
+    bottom: 550px;
+    right: 0;
+    background-color: var(--primary-color);
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonOn{
+    background-image: url();
+    position: fixed;
+    bottom: 550px;
+    right: 0;
+    background-color: var(--primary-color);
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

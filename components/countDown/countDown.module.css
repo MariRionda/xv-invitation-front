@@ -1,0 +1,19 @@
+.container{
+    background-color:var(--primary-color);
+    border-radius: 50%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:300px;
+    height: 300px;
+    padding:35px;
+}
+
+.num{
+    font-size: 50px;
+    font-family: SecondaryFont;
+}
+.word{
+    font-size: 20px;
+    font-family: SecondaryFont;
+}

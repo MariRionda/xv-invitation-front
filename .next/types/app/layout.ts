@@ -1,4 +1,4 @@
-// File: E:\MARI\DR full code\PROYECTOS\Invitations\xv-invitation\client\app\layout.js
+// File: E:\MARI\DR full code\PROYECTOS\Invitations\xv-invitation\xv-invitation-front\app\layout.js
 import * as entry from '../../../app/layout'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 

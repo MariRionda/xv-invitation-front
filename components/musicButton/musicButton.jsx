@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
 import { Howl} from 'howler';
+import styles from './musicButton.module.css';
 
 export default function Music() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -40,10 +41,7 @@ export default function Music() {
   }, []);
 
   return (
-    <div>
-      <button onClick={toggleMusic}>
-        {isPlaying ? '🔊' : '🔈'}
-      </button>
+    <div className={isPlaying ? styles.buttonOn : styles.buttonOff } onClick={toggleMusic}>
     </div>
   );
 }

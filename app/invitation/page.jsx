@@ -3,7 +3,7 @@ import InvitationProtected from '../../components/invitationProtected/invitation
 const Invitation = () => {
   return (
     <div>
-      <InvitationProtected />
+      <InvitationProtected/>
     </div>
   )
 }

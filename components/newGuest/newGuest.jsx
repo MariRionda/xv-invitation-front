@@ -11,18 +11,21 @@ const guestData = {
   name: "",
   state: "No confirmó",
   phone: "",
+  amount_guests: 0,
+  amount_confirm: 0,
 };
 
 const NewGuest = () => {
 
   const port = process.env.NEXT_PUBLIC_PORT;
+  
 
   const [guest, setGuest] = useState(guestData);
-  const [allGuests, setAllGuest] = useState([]);
+  const [allGuests, setAllGuest] = useState(["sin datos"]);
 
   const sendData = async (guest) => {
     await axios
-      .post(`${port}guest/`, guest)
+      .post(`${port}/guest`, guest)
       .then((response) => {
         createToast("success", response.data.msg);
         setGuest(guestData);
@@ -33,7 +36,7 @@ const NewGuest = () => {
   };
   const getGuests = async () => {
     await axios
-      .get(`${port}guest/all`)
+      .get(`${port}/guest/all`)
       .then((response) => {
         setAllGuest(response.data);
       })
@@ -43,7 +46,7 @@ const NewGuest = () => {
   };
   const deleteGuests = async (id) => {
     await axios
-      .delete(`${port}guest/${id}`)
+      .delete(`${port}/guest/${id}`)
       .then((response) => {
         setAllGuest(response.data);
       })
@@ -53,6 +56,7 @@ const NewGuest = () => {
   };
 
   useEffect(() => {
+    console.log(port)
     getGuests();
   }, [guest]);
 
@@ -105,6 +109,10 @@ const NewGuest = () => {
       createToast("error", "Debe introducir teléfono");
       return;
     }
+    if (!guest.amount_guests) {
+      createToast("error", "Debe introducir cantidad de invitados");
+      return;
+    }
     if (guest.phone.length !== 10) {
       createToast("error", "Debe introducir teléfono válido");
       return;
@@ -142,23 +150,42 @@ const NewGuest = () => {
             />
           </label>
         </div>
+        <div className={styles.inputWrapper}>
+          <label className={styles.label}>
+            <p>Cantidad de invitados:</p>
+            <input
+              type="number"
+              name="amount_guests"
+              value={guest.amount_guests}
+              placeholder="0"
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </label>
+        </div>
         <button type="submit" className={styles.button}>
           Agregar
         </button>
       </form>
       <div className={styles.divList}>
-        <h2>Invitados</h2>
+        <div className={styles.listTitle}>Invitados</div>
         <div>
-          <div className={styles.List}>
-            <div className={styles.List}><b>Nombre👥</b></div>
-            <div className={styles.List}><b>Telefono📲</b></div>
+          <div className={styles.ListContainer}>
+            <div className={styles.ListSubTitle} style={{width:"20px"}}>👥</div>
+            <div className={styles.ListSubTitle} style={{width:"150px"}}>Nombre</div>
+            <div className={styles.ListSubTitle} style={{width:"120px"}}>Telefono📲</div>
+            <div className={styles.ListSubTitle}>👨‍👩‍👧‍👦</div>
           </div>
-          {allGuests.length > 0
+          {allGuests[0]=="sin datos"
+          ? <div>Cargando...</div>
+          :allGuests.length > 0
             ? allGuests.map((guest, i) => {
                 return (
-                  <div className={styles.List} key={i}>
-                    <div className={styles.List}>✔️{guest.name}</div>
-                    <div className={styles.List}>{guest.phone} </div>
+                  <div className={styles.ListContainer} key={i}>
+                    <div className={styles.List} style={{width:"20px"}}>{i+1}</div>
+                    <div className={styles.List} style={{width:"150px"}}>✔️{guest.name}</div>
+                    <div className={styles.List} style={{width:"120px"}}>{guest.phone} </div>
+                    <div className={styles.List}>{guest.amount_guests} </div>
                   </div>
                 );
               })
