@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./newGuest.module.css";
@@ -18,7 +19,8 @@ const guestData = {
 const NewGuest = () => {
 
   const port = process.env.NEXT_PUBLIC_PORT;
-  
+
+  const router = useRouter();  
 
   const [guest, setGuest] = useState(guestData);
   const [allGuests, setAllGuest] = useState(["sin datos"]);
@@ -192,6 +194,7 @@ const NewGuest = () => {
             : null}
         </div>
         <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
+        <button className={styles.button} onClick={()=>{router.push("/invitation")}}>Ver Invitación</button>
       </div>
     </div>
   );

@@ -47,6 +47,7 @@ const FormLogin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if(form.name==="Giovana Mendez" && form.code==="xvgiovaM"){
+      window.sessionStorage.setItem("authenticated", true);
       router.push("/createGuests");
       createToast("success", "Bienvenida Giova, ya puedes cargar todos tus invitados")
     }
