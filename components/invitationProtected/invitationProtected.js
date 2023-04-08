@@ -18,6 +18,19 @@ const InvitationProtected = () => {
     }
   }, []);
 
+  const scheduleEvent = () => {
+    const startTime = encodeURIComponent(new Date('2023-04-29T21:00:00-03:00').toISOString())
+    console.log(startTime)
+    const endTime = encodeURIComponent(new Date('2023-04-30T05:00:00-03:00').toISOString())
+    console.log(endTime)
+    const eventName = encodeURIComponent('15 años Giova')
+    const eventDescription = encodeURIComponent('Fiesta de Giovana Mendez')
+    const eventLocation = encodeURIComponent('https://www.google.com/maps/place/Salon+Vallejos+Eventos/@-23.1387456,-64.3309091,17z/data=!3m1!4b1!4m6!3m5!1s0x940ff5fa7d31adaf:0xe51df841fd5caad!8m2!3d-23.1387506!4d-64.3283342!16s%2Fg%2F11f29y22x7')
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventName}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}&sf=true&output=xml`
+
+    window.open(googleCalendarUrl, '_blank')
+  }
+
   // Si el usuario está autenticado, mostrar el contenido de la página
   return (
     <div className={styles.container}>
@@ -56,7 +69,7 @@ const InvitationProtected = () => {
         <div className={styles.sec}>
           <div className={styles.subtitle}>Día</div>
           <div className={styles.text}>Sábado 29 de abril - 21hs</div>
-          <WhereButton title={'AGENDAR'}/>  
+          <WhereButton title={'AGENDAR'} click={scheduleEvent}/>  
         </div>
         <div className={styles.sec}>
           <div className={styles.subtitle}>Lugar</div>
@@ -68,7 +81,7 @@ const InvitationProtected = () => {
         <div className={styles.guestTitle}>Datos del invitado</div>
         <div className={styles.guest}>
         <div className={styles.guestName}>Sergio Andrés David Maioli</div>
-        <div className={styles.guestAmount}>Invitación válida para 2 persona</div>
+        <div className={styles.guestAmount}>Invitación válida para 2 personas</div>
         </div>
         <WhereButton title={'CONFIRMAR ASISTENCIA'}/>
       </div>
