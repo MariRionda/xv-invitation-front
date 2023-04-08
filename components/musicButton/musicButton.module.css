@@ -1,5 +1,8 @@
 .buttonOff{
-
+    background-image: url('../../public/utils/haut-parleur-gris-et-icone-sonore.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     position: fixed;
     bottom: 550px;
     right: 0;
@@ -12,7 +15,11 @@
     align-items: center;
 }
 .buttonOn{
-    background-image: url();
+    background-image:  url('../../public/utils/music.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x:-8px;
+    background-position-y:-13px;
     position: fixed;
     bottom: 550px;
     right: 0;

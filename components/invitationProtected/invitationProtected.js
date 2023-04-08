@@ -22,10 +22,11 @@ const InvitationProtected = () => {
   return (
     <div className={styles.container}>
     <NavBar/>
-    <Music />
       <div className={styles.firstPage}>
         <div>
+          <div className={styles.leftLine}></div>
           <p className={styles.date}>29.04.2023</p>
+          <div className={styles.rightLine}></div>
         </div>
         <div className={styles.centralDiv}>
           <h1 className={styles.firstname}>Giovana</h1>
@@ -39,11 +40,15 @@ const InvitationProtected = () => {
       </div>
 
       <div className={styles.counter}>
-        <Countdown date="2023-04-30T00:00:00.000Z" />
-        <div className={styles.dressCode}>
-          <h1>Dress Code</h1>
-          <div></div>
-          <h3>Elegante</h3>
+        <div className={styles.flower1}></div>
+        <div className={styles.buterfly1}></div>
+        <div className={styles.countBack}><Countdown date="2023-04-30T00:00:00.000Z" /></div>
+        <div className={styles.codeBack}>
+          <div className={styles.dressCode}>
+            <div className={styles.dressTitle}>Dress Code</div>
+            <div className={styles.bun}></div>
+            <div className={styles.code}>Elegante</div>
+          </div>
         </div>
       </div>
       <div className={styles.where}>
@@ -55,12 +60,7 @@ const InvitationProtected = () => {
         </div>
         <div className={styles.sec}>
           <div className={styles.subtitle}>Lugar</div>
-          <div className={styles.text}>Salón</div>
-          <WhereButton title={'CONFIRMAR ASISTENCIA'}/> 
-        </div>
-        <div className={styles.sec}>
-          <div className={styles.subtitle}>Dirección</div>
-          <div className={styles.text}>dirección</div>
+          <div className={styles.text}>Salón - dirección</div>
           <WhereButton title={'¿CÓMO LLEGAR?'}/>         
         </div>
       </div>
@@ -72,6 +72,7 @@ const InvitationProtected = () => {
         </div>
         <WhereButton title={'CONFIRMAR ASISTENCIA'}/>
       </div>
+      <Music />
     </div>
   );
 };

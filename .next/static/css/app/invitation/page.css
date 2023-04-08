@@ -2,29 +2,35 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/countDown/countDown.module.css ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************/
 .countDown_container__VIMl9{
-    background-color:var(--primary-color);
+    background-color:var(--background-color);
+    box-shadow: 0px 0px 10px black;
     border-radius: 50%;
+    border: 1px solid var(--primary-color);
     display:flex;
     justify-content: space-between;
     align-items: center;
-    width:300px;
-    height: 300px;
+    width:290px;
+    height: 290px;
     padding:35px;
 }
-
 .countDown_num__DjN3B{
     font-size: 50px;
     font-family: SecondaryFont;
+    
 }
 .countDown_word__gLlF5{
     font-size: 20px;
     font-family: SecondaryFont;
+    color: var(--primary-color);
 }
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/musicButton/musicButton.module.css ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************/
 .musicButton_buttonOff__8T514{
-
+    background-image: url(/_next/static/media/haut-parleur-gris-et-icone-sonore.5de918e6.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     position: fixed;
     bottom: 550px;
     right: 0;
@@ -37,7 +43,11 @@
     align-items: center;
 }
 .musicButton_buttonOn__GfOYm{
-    background-image: url();
+    background-image:  url(/_next/static/media/music.d1846514.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x:-8px;
+    background-position-y:-13px;
     position: fixed;
     bottom: 550px;
     right: 0;
@@ -58,9 +68,10 @@
     align-items: center;
     background-color: var(--background-color);
     color: var(--font-primary-color);
-    height: 60px;
+    height: 40px;
     padding: 0 20px;
     width: 100%;
+    box-shadow: 0px 0px 5px black;
   }
   
   .navBar_menuButton__Hialm {
@@ -110,7 +121,7 @@
       top: 35px;
       left: 0;
       right: 20;
-      background-color: #fff;
+      background-color: var(--primary-color);
       color: #000;
       padding: 10px;
       transition: opacity 0.3s ease-in-out;
@@ -175,6 +186,7 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/invitationProtected/invitationProtected.module.css ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************/
 .invitationProtected_container__RiQ3T{
+    background-image: url(/_next/static/media/flores-rosas-vector-floral-seamless-patron_101660-1026.db9ac54c.jpg);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -188,11 +200,26 @@
     align-items: center;
     width: 90%;
 }
+.invitationProtected_leftLine__iGNT_{
+    position: absolute;
+    margin-top: 117px;
+    margin-left: -129px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    height: 5px;
+    width: 77px;
+}
+.invitationProtected_rightLine__3pBWf{
+    position: absolute;
+    margin-top: 117px;
+    margin-left: 68px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    height: 5px;
+    width: 59px;
+}
 .invitationProtected_date__NkEHA{
     position: absolute;
     margin-top: 108px;
     margin-left: -52px;
-    background-color: rgb(255, 255, 255);
     height: 20px;
     width: 120px;
     font-family: TertiaryFont, sans-serif;
@@ -205,7 +232,6 @@
     justify-content: center;
     align-items: center;
     height: 170px;
-    border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 .invitationProtected_firstname__LkMEF{
@@ -238,7 +264,27 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 600px;
+    height: 800px;
+}
+.invitationProtected_countBack__e5Pei{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 40px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 67%, rgba(255,255,255,0) 100%);
+    width: 100%;
+    height: 450px;
+}
+.invitationProtected_codeBack__o0WzW{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 30px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 67%, rgba(255,255,255,0) 100%);
+    width: 100%;
+    height: 350px;
 }
 .invitationProtected_dressCode__0xkbQ{
     display: flex;
@@ -248,7 +294,38 @@
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 10px black;
+}
+.invitationProtected_dressTitle__noQ6_{
+    font-family: SecondaryFont;
+    font-size: 30px;
+    color: var(--primary-color);
+}
+.invitationProtected_bun__ZJvmF{
+    width: 70px;
+    height: 50px;
+    background-image: url("/_next/static/media/moño de traje.e41693d7.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.invitationProtected_code__Y_GOG{
+    font-family: PrimaryFont;
+    font-size: 25px;
+}
+.invitationProtected_flower1__lt6wE{
+    position: absolute;
+    margin-left: -270px;
+    margin-top: 75px;
+    width: 100px;
+    height: 100px;
+    background-image: url(/_next/static/media/flor1.88f94b2c.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(45deg);
 }
 .invitationProtected_where__CpSxc{
     display: flex;
@@ -284,6 +361,8 @@
     color: var(--tertiary-color);
 }
 .invitationProtected_confirm__gydNV{
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 67%, rgba(255,255,255,0) 100%);
     display: flex;
     flex-direction: column;
     padding: 50px;
