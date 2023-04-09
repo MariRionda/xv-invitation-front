@@ -104,6 +104,58 @@
         "async": false
       }
     },
+    "(app-client)/./components/formLogin/formLogin.jsx": {
+      "*": {
+        "id": "(sc_client)/./components/formLogin/formLogin.jsx",
+        "chunks": [
+          "app/page:app/page"
+        ],
+        "name": "*",
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./components/formLogin/formLogin.jsx",
+        "chunks": [
+          "app/page:app/page"
+        ],
+        "name": "",
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./components/formLogin/formLogin.jsx",
+        "chunks": [
+          "app/page:app/page"
+        ],
+        "name": "default",
+        "async": false
+      }
+    },
+    "(app-client)/./components/newGuest/newGuest.jsx": {
+      "*": {
+        "id": "(sc_client)/./components/newGuest/newGuest.jsx",
+        "chunks": [
+          "app/createGuests/page:app/createGuests/page"
+        ],
+        "name": "*",
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./components/newGuest/newGuest.jsx",
+        "chunks": [
+          "app/createGuests/page:app/createGuests/page"
+        ],
+        "name": "",
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./components/newGuest/newGuest.jsx",
+        "chunks": [
+          "app/createGuests/page:app/createGuests/page"
+        ],
+        "name": "default",
+        "async": false
+      }
+    },
     "(app-client)/./components/invitationProtected/invitationProtected.js": {
       "*": {
         "id": "(sc_client)/./components/invitationProtected/invitationProtected.js",
@@ -133,6 +185,12 @@
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\page": [
+      "static/css/app/page.css"
+    ],
+    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\createGuests\\page": [
+      "static/css/app/createGuests/page.css"
+    ],
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\invitation\\page": [
       "static/css/app/invitation/page.css"
     ],
@@ -328,6 +386,68 @@
     "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
     "chunks": [
       "app-client-internals:app-client-internals"
+    ],
+    "name": "default",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.jsx": {
+    "id": "(app-client)/./components/formLogin/formLogin.jsx",
+    "chunks": [
+      "app/page:app/page"
+    ],
+    "name": "*",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.jsx#": {
+    "id": "(app-client)/./components/formLogin/formLogin.jsx",
+    "chunks": [
+      "app/page:app/page"
+    ],
+    "name": "",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.jsx#default": {
+    "id": "(app-client)/./components/formLogin/formLogin.jsx",
+    "chunks": [
+      "app/page:app/page"
+    ],
+    "name": "default",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/createGuests/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.jsx": {
+    "id": "(app-client)/./components/newGuest/newGuest.jsx",
+    "chunks": [
+      "app/createGuests/page:app/createGuests/page"
+    ],
+    "name": "*",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.jsx#": {
+    "id": "(app-client)/./components/newGuest/newGuest.jsx",
+    "chunks": [
+      "app/createGuests/page:app/createGuests/page"
+    ],
+    "name": "",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.jsx#default": {
+    "id": "(app-client)/./components/newGuest/newGuest.jsx",
+    "chunks": [
+      "app/createGuests/page:app/createGuests/page"
     ],
     "name": "default",
     "async": false

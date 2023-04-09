@@ -19,14 +19,12 @@ const InvitationProtected = () => {
   }, []);
 
   const scheduleEvent = () => {
-    const startTime = encodeURIComponent(new Date('2023-04-29T21:00:00-03:00').toISOString())
-    console.log(startTime)
-    const endTime = encodeURIComponent(new Date('2023-04-30T05:00:00-03:00').toISOString())
-    console.log(endTime)
-    const eventName = encodeURIComponent('15 años Giova')
-    const eventDescription = encodeURIComponent('Fiesta de Giovana Mendez')
+    const startTime = '20230429T210000'
+    const endTime = '20230430T050000'
+    const eventName = encodeURIComponent('15 años Giovana')
+    const eventDescription = encodeURIComponent('Fiesta de 15 años de Giovana Mendez')
     const eventLocation = encodeURIComponent('https://www.google.com/maps/place/Salon+Vallejos+Eventos/@-23.1387456,-64.3309091,17z/data=!3m1!4b1!4m6!3m5!1s0x940ff5fa7d31adaf:0xe51df841fd5caad!8m2!3d-23.1387506!4d-64.3283342!16s%2Fg%2F11f29y22x7')
-    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventName}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}&sf=true&output=xml`
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventName}&dates=${startTime}/${endTime}&ctz=America/Argentina/Buenos_Aires&details=${eventDescription}&location=${eventLocation}&sf=true&output=xml`
 
     window.open(googleCalendarUrl, '_blank')
   }
