@@ -1,22 +1,126 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Countdown from "../../components/countDown/countDown";
 import Music from "../../components/musicButton/musicButton";
 import styles from "./invitationProtected.module.css";
 import NavBar from "../navBar/navBar";
 import WhereButton from "../whereButton/whereButton";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { createToast } from "../usefulFunctions/usefulFunctions";
 
-const InvitationProtected = () => {
+const InvitationProtected = ({name}) => {
+
+  const port = process.env.NEXT_PUBLIC_PORT;
  
   const router = useRouter();
+
+  const [guest, setGuest]=useState({})
 
   useEffect(() => {
     const authenticated = window.sessionStorage.getItem("authenticated");
     if (!authenticated) {
       router.push("/");
     }
+    if(name!=="demo") getGuest()
+    if(name=="demo") setGuest({name: "Nombre del Invitado", amount_guests: 2});
   }, []);
+
+  const getGuest = async () => {
+      await axios
+      .get(`${port}/guest/${name}`)
+      .then((response) => {
+        setGuest(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const edithGuest = async (obj) => {
+    await axios
+      .put(`${port}/guest/`, obj)
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleAttend = () => {
+    Swal.fire({
+      html: `
+      <div>
+      <h1 style="font-size: 17px;">Confirmar asistencia</h1>
+      <p>Confirma cuántos asistiran</p>
+      <select id="guest-select" class="swal2-input" style="font-size: 15px;">
+        ${(() => {
+          let options = '';
+          for (let i = 1; i <= guest.amount_guests; i++) {
+            options += `<option value="${i}">${i}</option>`;
+          }
+          return options;
+        })()}
+      </select>
+    </div>
+      `,
+      showCancelButton: true,
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#e7c6c6",
+      cancelButtonColor: '#c7b6d7',
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        const selectedGuests = document.getElementById("guest-select").value;
+        const obj2={
+          name: guest.name,
+          state: "Asistiré",
+          amount_guests: guest.amount_guests,
+          amount_confirm: selectedGuests,
+          phone: guest.phone
+        }
+        edithGuest(obj2)
+        .then(()=>{
+          createToast("success", "Se confirmó asistencia correctamente");
+        })
+      }
+    })
+    .catch(()=>{
+      createToast("error", "No se pudo confimar, intente nuevamente.");
+    })
+    ;
+  }
+
+  const handleNotAttend = () => {
+    Swal.fire({
+      title: '¿Seguro?',
+      text: "Estas por confirmar que NO vendras a mi fiesta",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "Estoy seguro",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#e7c6c6",
+      cancelButtonColor: '#c7b6d7',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const obj={
+          name: guest.name,
+          state: "No asistiré",
+          amount_guests: guest.amount_guests,
+          amount_confirm: 0,
+          phone: guest.phone
+        }
+        edithGuest(obj)
+        createToast("success", "¡Listo! si cambias de opinion puedes confirmar asistencia antes de la fecha limite.");
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        createToast("error", "¡Cancelado! Por favor, confira que si vendras a mi fiesta...");
+      }
+    })
+
+  }
 
   const scheduleEvent = () => {
     const startTime = '20230429T210000'
@@ -45,7 +149,7 @@ const InvitationProtected = () => {
         </div>
         <div>
           <div><p className={styles.quotationMark}>‘‘</p></div>
-          <div><p className={styles.sentence}>Quiero compartir contigo esa noche mágica e inolvidable para mí</p></div>
+          <div><p className={styles.sentence}>Hay momentos en la vida que son irrepetibles, pero compartirlos con las personas que más querés los hace inolvidables</p></div>
           <div><p className={styles.quotationMark}>’’</p></div>
         </div>
       </div>
@@ -78,10 +182,12 @@ const InvitationProtected = () => {
       <div className={styles.confirm}>
         <div className={styles.guestTitle}>Datos del invitado</div>
         <div className={styles.guest}>
-        <div className={styles.guestName}>Sergio Andrés David Maioli</div>
-        <div className={styles.guestAmount}>Invitación válida para 2 personas</div>
+        <div className={styles.guestName}>{guest.name}</div>
+        <div className={styles.guestAmount}>{`Invitación válida para ${guest.amount_guests} personas`}</div>
         </div>
-        <WhereButton title={'CONFIRMAR ASISTENCIA'}/>
+        <WhereButton title={'CONFIRMAR ASISTENCIA'} click={handleAttend}/>
+        <div>{"(Confirmar antes del 20/04/2023)"}</div>
+        <WhereButton title={'No Asistiré'} click={handleNotAttend}/>
       </div>
       <Music />
     </div>

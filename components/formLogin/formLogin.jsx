@@ -13,17 +13,23 @@ const guestForm = {
 
 const FormLogin = () => {
 
+  console.log(encryptName('Sergio David'))
+
   const port = process.env.NEXT_PUBLIC_PORT;
 
   const router = useRouter();
 
   const [form, setForm] = useState(guestForm);
-  const [allGuests, setAllGuest] = useState([]);
+  const [allGuests, setAllGuest] = useState(["sin datos"]);
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    getGuests();
+  }, []);
 
   const getGuests = async () => {
     await axios
-      .get(`${port}guest/all`)
+      .get(`${port}/guest/all`)
       .then((response) => {
         setAllGuest(response.data);
       })
@@ -32,9 +38,7 @@ const FormLogin = () => {
       });
   };
 
-  useEffect(() => {
-    getGuests();
-  }, []);
+  
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -53,7 +57,7 @@ const FormLogin = () => {
     }
     else if (Match(allGuests, form.code)) {
       window.sessionStorage.setItem("authenticated", true);
-      router.push("/invitation");
+      router.push(`/invitation/${form.name}`);
       createToast("success", "Bienvenido " + form.name)
     } else {
       createToast("error", "Código incorrecto");
@@ -61,42 +65,47 @@ const FormLogin = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          Nombre:
-          <input
-            type="text"
-            className={styles.input}
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Código:
-          <div className={styles.passwordContainer}>
+    <div>
+      {allGuests[0]!=="sin datos"
+      ?<div className={styles.container}>
+        <h1 className={styles.title}>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <label className={styles.label}>
+            Nombre:
             <input
-              type={showPassword ? "text" : "password"}
+              type="text"
               className={styles.input}
-              name="code"
-              value={form.code}
+              name="name"
+              value={form.name}
               onChange={handleChange}
             />
-            <button
-              type="button"
-              className={styles.showPasswordButton}
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? "🐵" : "🙈"}
-            </button>
-          </div>
-        </label>
-        <button type="submit" className={styles.submitButton}>
-          Ingresar
-        </button>
-      </form>
+          </label>
+          <label className={styles.label}>
+            Código:
+            <div className={styles.passwordContainer}>
+              <input
+                type={showPassword ? "text" : "password"}
+                className={styles.input}
+                name="code"
+                value={form.code}
+                onChange={handleChange}
+              />
+              <button
+                type="button"
+                className={styles.showPasswordButton}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "🐵" : "🙈"}
+              </button>
+            </div>
+          </label>
+          <button type="submit" className={styles.submitButton}>
+            Ingresar
+          </button>
+        </form>
+      </div>
+      :<div>Cargando...</div>
+      }
     </div>
   );
 };
