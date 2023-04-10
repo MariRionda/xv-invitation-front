@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Countdown from "../../components/countDown/countDown";
 import Music from "../../components/musicButton/musicButton";
 import styles from "./invitationProtected.module.css";
@@ -15,6 +15,14 @@ const InvitationProtected = ({name}) => {
   const port = process.env.NEXT_PUBLIC_PORT;
  
   const router = useRouter();
+  const start = useRef(null);
+  const where = useRef(null);
+  const assistance = useRef(null);
+
+
+  const scrollToSection = (sectionRef) => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const [guest, setGuest]=useState({})
 
@@ -136,8 +144,12 @@ const InvitationProtected = ({name}) => {
   // Si el usuario está autenticado, mostrar el contenido de la página
   return (
     <div className={styles.container}>
-    <NavBar/>
-      <div className={styles.firstPage}>
+    <NavBar
+      start={() => scrollToSection(start)}
+      where={() => scrollToSection(where)}
+      assistance={() => scrollToSection(assistance)}
+    />
+      <section ref={start} className={styles.firstPage}>
         <div>
           <div className={styles.leftLine}></div>
           <p className={styles.date}>29.04.2023</p>
@@ -152,7 +164,7 @@ const InvitationProtected = ({name}) => {
           <div><p className={styles.sentence}>Hay momentos en la vida que son irrepetibles, pero compartirlos con las personas que más querés los hace inolvidables</p></div>
           <div><p className={styles.quotationMark}>’’</p></div>
         </div>
-      </div>
+      </section>
 
       <div className={styles.counter}>
         <div className={styles.flower1}></div>
@@ -166,7 +178,7 @@ const InvitationProtected = ({name}) => {
           </div>
         </div>
       </div>
-      <div className={styles.where}>
+      <section ref={where} className={styles.where}>
         <div className={styles.title}>Fiesta</div>
         <div className={styles.sec}>
           <div className={styles.subtitle}>Día</div>
@@ -178,8 +190,8 @@ const InvitationProtected = ({name}) => {
           <div className={styles.text}>Salón Vallejos Eventos</div>
           <WhereButton title={'¿CÓMO LLEGAR?'} click={()=>router.push('https://www.google.com/maps/place/Salon+Vallejos+Eventos/@-23.1387456,-64.3309091,17z/data=!3m1!4b1!4m6!3m5!1s0x940ff5fa7d31adaf:0xe51df841fd5caad!8m2!3d-23.1387506!4d-64.3283342!16s%2Fg%2F11f29y22x7')}/>         
         </div>
-      </div>
-      <div className={styles.confirm}>
+      </section>
+      <section ref={assistance} className={styles.confirm}>
         <div className={styles.guestTitle}>Datos del invitado</div>
         <div className={styles.guest}>
         <div className={styles.guestName}>{guest.name}</div>
@@ -188,7 +200,7 @@ const InvitationProtected = ({name}) => {
         <WhereButton title={'CONFIRMAR ASISTENCIA'} click={handleAttend}/>
         <div>{"(Confirmar antes del 20/04/2023)"}</div>
         <WhereButton title={'No Asistiré'} click={handleNotAttend}/>
-      </div>
+      </section>
       <Music />
     </div>
   );

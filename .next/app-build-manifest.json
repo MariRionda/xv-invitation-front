@@ -1,10 +1,10 @@
 {
   "pages": {
-    "/invitation/[name]/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/invitation/[name]/page.css",
-      "static/chunks/app/invitation/[name]/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,6 +16,12 @@
       "static/chunks/main-app.js",
       "static/css/app/createGuests/page.css",
       "static/chunks/app/createGuests/page.js"
+    ],
+    "/invitation/[name]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/invitation/[name]/page.css",
+      "static/chunks/app/invitation/[name]/page.js"
     ]
   }
 }

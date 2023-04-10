@@ -73,7 +73,12 @@
     width: 100%;
     box-shadow: 0px 0px 5px black;
   }
-  
+  .navBar_navbar___kSTs.navBar_open__Y0ERN a:hover {
+         margin: 5px 0;
+        justify-content: center;
+        text-align: left ;
+  }
+
   .navBar_menuButton__Hialm {
     display: none;
   }
@@ -98,49 +103,43 @@
     font-size: 15px;
   }
   
-  .navBar_menu__XrB0s a {
+  .navBar_menu__XrB0s li {
     text-decoration: none;
     color: #000;
   }
   
-  .navBar_menu__XrB0s a:hover {
+  .navBar_menu__XrB0s li:hover {
     text-decoration: none;
     color: var(--primary-color);
     cursor: pointer;
   }
-  
+
+   
   @media (max-width: 600px) {
-    .navBar_navbar___kSTs {
+    .navBar_navbar___kSTs.navBar_open__Y0ERN {
       position: relative;
+      height: 100px;
     }
-  
-    .navBar_menu__XrB0s {
+    .navBar_menu__XrB0s{
       display: none;
-      opacity: 0;
-      position: absolute;
-      top: 35px;
-      left: 0;
-      right: 20;
-      background-color: var(--background-color);
-      color: #000;
-      padding: 10px;
-      transition: opacity 0.3s ease-in-out;
-      
     }
-  
-    .navBar_menu__XrB0s.navBar_open__Y0ERN {
+    .navBar_menuOpen__mm1y2 {
       display: flex;
       flex-direction: column;
-      justify-content: left;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10px;
       text-align: left;
       opacity: 1;
-      width: 100%;      
+      width: 100%;   
+      height: 800px; 
+      list-style-type: none;
     }
-  
-    .navBar_menu__XrB0s li {
-      margin: 5px 0;
-      justify-content: center;
-      text-align: left ;
+
+    .navBar_menuOpen__mm1y2 li:hover {
+      text-decoration: none;
+      color: var(--primary-color);
+      cursor: pointer;
     }
   
     .navBar_menuButton__Hialm {
@@ -158,7 +157,7 @@
       left: 10px;
       margin: 0;
     }
-  
+ 
     .navBar_menuIcon___uNML {
       background-color: #000;
     }

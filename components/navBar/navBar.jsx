@@ -1,9 +1,8 @@
 'use client'
 import { useState } from 'react';
-import { useRef } from 'react';
 import styles from './navBar.module.css'
 
-export default function NavBar() {
+export default function NavBar({start, where, assistance}) {
 
     const [menuOpen, setMenuOpen] = useState(false);
   
@@ -11,33 +10,26 @@ export default function NavBar() {
         setMenuOpen(!menuOpen);
       };
     
-      const start = useRef(null);
-      const where = useRef(null);
-      const assistance = useRef(null);
-
-    
-      const scrollToSection = (sectionRef) => {
-        sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-      };
-    
       return (
-        <nav className={styles.navbar}>
+        <nav className={`${styles.navbar} ${menuOpen ? styles.open : ''}`}>
           <button className={styles.menuButton} onClick={handleMenuClick}>
-            <span className={styles.menuIcon} />
-            <span className={styles.menuIcon} />
-            <span className={styles.menuIcon} />
+            <span className={styles.menuIcon}/>
+            <span className={styles.menuIcon}/>
+            <span className={styles.menuIcon}/>
           </button>
-          <ul className={`${styles.menu} ${menuOpen ? styles.open : ''}`}>
-            <li>
-              <a onClick={() => scrollToSection(start)}>Inicio</a>
-            </li>
-            <li>
-              <a onClick={() => scrollToSection(where)}>Donde y cuando</a>
-            </li>
-            <li>
-              <a onClick={() => scrollToSection(assistance)}>Confirmar Asistencia</a>
-            </li>
+          {menuOpen?
+          <ul className={styles.menuOpen}>
+            <li onClick={start}>Inicio</li>
+            <li onClick={where}>Donde y cuando</li>
+            <li onClick={assistance}>Confirmar Asistencia</li>
           </ul>
+          :
+          <ul className={styles.menu}>
+            <li onClick={start}>Inicio</li>
+            <li onClick={where}>Donde y cuando</li>
+            <li onClick={assistance}>Confirmar Asistencia</li>
+          </ul>
+          }
         </nav>
       );
     }

@@ -13,7 +13,7 @@ const guestForm = {
 
 const FormLogin = () => {
 
-  console.log(encryptName('Sergio David'))
+  console.log(encryptName('Matías Palma'))
 
   const port = process.env.NEXT_PUBLIC_PORT;
 
@@ -22,6 +22,7 @@ const FormLogin = () => {
   const [form, setForm] = useState(guestForm);
   const [allGuests, setAllGuest] = useState(["sin datos"]);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getGuests();
@@ -104,7 +105,7 @@ const FormLogin = () => {
           </button>
         </form>
       </div>
-      :<div>Cargando...</div>
+      :<div className={styles.container}><div className={styles.spinner}/></div>
       }
     </div>
   );
