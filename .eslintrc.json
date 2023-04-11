@@ -1,6 +1,4 @@
 {
   "extends": ["./node_modules/standard/eslintrc.json","next/core-web-vitals"],
-  "rules": {
-    "semi": ["error", "always"]
-  }
+  "semi": "off"
 }
