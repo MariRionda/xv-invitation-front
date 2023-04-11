@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { compare } from "./encryptar";
 
 const bcrypt = require("bcryptjs");
 
@@ -15,7 +16,7 @@ export function encryptName(name) {
 export function Match(guests, encrypt) {
   let state = false
   guests?.forEach((guest) => {
-    if (bcrypt.compareSync(guest.name, encrypt)) {
+    if (compare(guest.name, encrypt)) {
       state = true
     }
   });
@@ -39,3 +40,5 @@ export const createToast = (icon, title) => {
     title,
   });
 };
+
+

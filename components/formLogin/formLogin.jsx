@@ -3,8 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./formLogin.module.css";
-import { Match, createToast } from "../usefulFunctions/usefulFunctions";
+import { Match, createToast, encryptName } from "../usefulFunctions/usefulFunctions";
 import axios from "axios";
+import { encrypted } from "../usefulFunctions/encryptar";
 
 const guestForm = {
   name: "",
@@ -35,8 +36,6 @@ const FormLogin = () => {
         console.error(error);
       });
   };
-
-  
 
   const handleChange = (e) => {
     e.preventDefault();

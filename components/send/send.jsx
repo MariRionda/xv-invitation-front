@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./send.module.css";
+import { encrypted } from "../usefulFunctions/encryptar";
 
 const Send = () => {
 
@@ -10,6 +11,9 @@ const Send = () => {
 
     const port = process.env.NEXT_PUBLIC_PORT;
 
+    const link = "https://xv-invitation-front.vercel.app/"
+
+    const [code, setCode]=useState("")
     const [guest, setGuest] = useState({});
     const [allGuests, setAllGuest] = useState(["sin datos"]);
     
@@ -35,11 +39,12 @@ const Send = () => {
 
     function handleSelect(e) {
         setGuest(allGuests[e.target.value]);
+        setCode(encrypted(allGuests[e.target.value].name))
     }
 
-    const handleSubmit = async (e)=>{
+    const handleSubmit = (e)=>{
         e.preventDefault()
-        console.log(guest)
+        router.push(`https://wa.me/${guest.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest.name}, Código: ${code}`)
     }
 
     return (
