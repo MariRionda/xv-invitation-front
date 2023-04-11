@@ -1,56 +1,27 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack-621667793e0768ca.js",
-      "static/chunks/455-ee86fb8ad879a49a.js",
-      "static/chunks/main-app-1d23c1b68c528193.js",
-      "static/chunks/app/layout-398950ae8c2c6a33.js"
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ],
-    "/createGuests/page": [
-      "static/chunks/webpack-621667793e0768ca.js",
-      "static/chunks/455-ee86fb8ad879a49a.js",
-      "static/chunks/main-app-1d23c1b68c528193.js",
-      "static/chunks/0895380a-2df1ae51c1a5c51d.js",
-      "static/chunks/433-4b506b04a750f158.js",
-      "static/chunks/911-498d8dd9b2fd9893.js",
-      "static/css/13507e000fdb1613.css",
-      "static/chunks/app/createGuests/page-8e46d5f59be0ba60.js"
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/layout.js"
     ],
     "/invitation/[name]/page": [
-      "static/chunks/webpack-621667793e0768ca.js",
-      "static/chunks/455-ee86fb8ad879a49a.js",
-      "static/chunks/main-app-1d23c1b68c528193.js",
-      "static/chunks/0895380a-2df1ae51c1a5c51d.js",
-      "static/chunks/433-4b506b04a750f158.js",
-      "static/chunks/911-498d8dd9b2fd9893.js",
-      "static/chunks/817-94c7827134e23eed.js",
-      "static/css/045173c4744cdd62.css",
-      "static/chunks/app/invitation/[name]/page-04e009e66f6dd7dd.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/invitation/[name]/page.css",
+      "static/chunks/app/invitation/[name]/page.js"
     ],
-    "/invitation/page": [
-      "static/chunks/webpack-621667793e0768ca.js",
-      "static/chunks/455-ee86fb8ad879a49a.js",
-      "static/chunks/main-app-1d23c1b68c528193.js",
-      "static/chunks/app/invitation/page-a29a27b1a1293576.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-621667793e0768ca.js",
-      "static/chunks/455-ee86fb8ad879a49a.js",
-      "static/chunks/main-app-1d23c1b68c528193.js",
-      "static/chunks/0895380a-2df1ae51c1a5c51d.js",
-      "static/chunks/433-4b506b04a750f158.js",
-      "static/chunks/911-498d8dd9b2fd9893.js",
-      "static/css/edc65d35efeb8c9a.css",
-      "static/chunks/app/page-58015afa4492394f.js"
-    ],
-    "/sendInvitations/page": [
-      "static/chunks/webpack-621667793e0768ca.js",
-      "static/chunks/455-ee86fb8ad879a49a.js",
-      "static/chunks/main-app-1d23c1b68c528193.js",
-      "static/chunks/0895380a-2df1ae51c1a5c51d.js",
-      "static/chunks/433-4b506b04a750f158.js",
-      "static/css/8ed1a37798de1f83.css",
-      "static/chunks/app/sendInvitations/page-f9640c6b43bb3c0d.js"
+    "/createGuests/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/createGuests/page.css",
+      "static/chunks/app/createGuests/page.js"
     ]
   }
 }

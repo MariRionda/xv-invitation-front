@@ -1,7 +1,5 @@
 {
-  "/createGuests/page": "app/createGuests/page.js",
-  "/invitation/[name]/page": "app/invitation/[name]/page.js",
-  "/invitation/page": "app/invitation/page.js",
   "/page": "app/page.js",
-  "/sendInvitations/page": "app/sendInvitations/page.js"
+  "/invitation/[name]/page": "app/invitation/[name]/page.js",
+  "/createGuests/page": "app/createGuests/page.js"
 }
