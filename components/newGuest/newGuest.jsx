@@ -25,6 +25,14 @@ const NewGuest = () => {
   const [guest, setGuest] = useState(guestData);
   const [allGuests, setAllGuest] = useState(["sin datos"]);
 
+  useEffect(() => {
+    const authenticated = window.sessionStorage.getItem("authenticated");
+    if (!authenticated) {
+      router.push("/");
+    }
+    getGuests();
+  }, [guest]);
+
   const sendData = async (guest) => {
     await axios
       .post(`${port}/guest`, guest)
@@ -56,11 +64,6 @@ const NewGuest = () => {
         console.error(error);
       });
   };
-
-  useEffect(() => {
-    console.log(port)
-    getGuests();
-  }, [guest]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -119,6 +122,7 @@ const NewGuest = () => {
       createToast("error", "Debe introducir teléfono válido");
       return;
     }
+    guest.name = guest.name.trim()
     guest.phone = "+549" + guest.phone;
     sendData(guest);
   };
@@ -196,6 +200,7 @@ const NewGuest = () => {
         <div className={styles.divButtons}>
           <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
           <button className={styles.button} onClick={()=>{router.push("/invitation/demo")}}>Ver Invitación</button>
+          <button className={styles.button} onClick={()=>{router.push("/sendInvitations")}}>Enviar invitaciones</button>
         </div>
       </div>
     </div>

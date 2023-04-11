@@ -11,17 +11,17 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
+    "/sendInvitations/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sendInvitations/page.css",
+      "static/chunks/app/sendInvitations/page.js"
+    ],
     "/createGuests/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/createGuests/page.css",
       "static/chunks/app/createGuests/page.js"
-    ],
-    "/invitation/[name]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/invitation/[name]/page.css",
-      "static/chunks/app/invitation/[name]/page.js"
     ]
   }
 }

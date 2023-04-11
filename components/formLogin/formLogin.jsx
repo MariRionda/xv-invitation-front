@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./formLogin.module.css";
-import { encryptName, Match, createToast } from "../usefulFunctions/usefulFunctions";
+import { Match, createToast } from "../usefulFunctions/usefulFunctions";
 import axios from "axios";
 
 const guestForm = {
@@ -13,8 +13,6 @@ const guestForm = {
 
 const FormLogin = () => {
 
-  console.log(encryptName('Matías Palma'))
-
   const port = process.env.NEXT_PUBLIC_PORT;
 
   const router = useRouter();
@@ -22,7 +20,6 @@ const FormLogin = () => {
   const [form, setForm] = useState(guestForm);
   const [allGuests, setAllGuest] = useState(["sin datos"]);
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getGuests();
