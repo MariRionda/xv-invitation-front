@@ -199,7 +199,7 @@ const NewGuest = () => {
         </div>
         <div className={styles.divButtons}>
           <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
-          <button className={styles.button} onClick={()=>{router.push("/invitation/demo")}}>Ver Invitación</button>
+          {/* <button className={styles.button} onClick={()=>{router.push("/invitation/demo")}}>Ver Invitación</button> */}
           <button className={styles.button} onClick={()=>{router.push("/sendInvitations")}}>Enviar invitaciones</button>
         </div>
       </div>

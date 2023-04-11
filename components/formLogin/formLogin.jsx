@@ -54,7 +54,7 @@ const FormLogin = () => {
     }
     else if (Match(allGuests, form.code)) {
       window.sessionStorage.setItem("authenticated", true);
-      router.push(`/invitation/${form.name}`);
+      // router.push(`/invitation/${form.name}`);
       createToast("success", "Bienvenido " + form.name)
     } else {
       createToast("error", "Código incorrecto");
