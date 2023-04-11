@@ -197,9 +197,9 @@ const InvitationProtected = ({name}) => {
         <div className={styles.guestName}>{guest.name}</div>
         <div className={styles.guestAmount}>{`Invitación válida para ${guest.amount_guests} personas`}</div>
         </div>
-        {/* <WhereButton title={'CONFIRMAR ASISTENCIA'} click={handleAttend}/>
+        <WhereButton title={'CONFIRMAR ASISTENCIA'} click={handleAttend}/>
         <div>{"(Confirmar antes del 20/04/2023)"}</div>
-        <WhereButton title={'No Asistiré'} click={handleNotAttend}/> */}
+        <WhereButton title={'No Asistiré'} click={handleNotAttend}/>
       </section>
       <Music />
     </div>

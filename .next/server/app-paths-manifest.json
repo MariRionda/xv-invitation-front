@@ -1,5 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/invitation/[name]/page": "app/invitation/[name]/page.js",
-  "/createGuests/page": "app/createGuests/page.js"
-}
