@@ -2,6 +2,12 @@
   "extends": ["./node_modules/standard/eslintrc.json","next/core-web-vitals"],
   "rules": {
     "semi": ["error", "never"],
-    "object-curly-spacing": ["error", "never"]
+    "object-curly-spacing": ["error", "never"],
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "never",
+      "afterOpening": "never",
+      "beforeClosing": "never"
+    }]
   }//no corrigue que sean obligatorios los punto y coma ni los espacios antes y despues de las llaves
 }
