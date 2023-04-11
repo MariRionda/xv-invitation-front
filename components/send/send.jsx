@@ -58,9 +58,13 @@ const Send = () => {
                             id="guest-select"
                             onChange={(e) => handleSelect(e)}
                             >
+                            <option defaultValue>-</option>
                             {
                                 allGuests?.map((g,i) => (
-                                    <option key={g.id} value={i}>{g.name}</option>
+                                
+                                    
+                                    <option key={g.id} value={i} >{g.name}</option>
+                                    
                                 ))
                             }
                         </select>
