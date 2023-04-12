@@ -1,4 +1,4 @@
-/* .container{
+.container{
     background-image: url('../../public/utils/flores-rosas-vector-floral-seamless-patron_101660-1026.jpg');
     display: flex;
     flex-direction: column;
@@ -207,4 +207,4 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 67%, rgba(255,255,255,0) 1
     font-size: PrimaryFont;
     font-size: 20x;
     color: var(--tertiary-color);
-} */
+}

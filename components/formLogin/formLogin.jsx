@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import styles from "./formLogin.module.css";
 import { Match, createToast, encryptName } from "../usefulFunctions/usefulFunctions";
 import axios from "axios";
-import { encrypted } from "../usefulFunctions/encryptar";
 
 const guestForm = {
   name: "",
@@ -54,7 +53,7 @@ const FormLogin = () => {
     }
     else if (Match(allGuests, form.code)) {
       window.sessionStorage.setItem("authenticated", true);
-      // router.push(`/invitation/${form.name}`);
+      router.push(`/invitation/${form.name}`);
       createToast("success", "Bienvenido " + form.name)
     } else {
       createToast("error", "Código incorrecto");

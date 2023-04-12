@@ -181,6 +181,32 @@
         "name": "default",
         "async": false
       }
+    },
+    "(app-client)/./components/invitationProtected/invitationProtected.js": {
+      "*": {
+        "id": "(sc_client)/./components/invitationProtected/invitationProtected.js",
+        "chunks": [
+          "app/invitation/[name]/page:app/invitation/[name]/page"
+        ],
+        "name": "*",
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./components/invitationProtected/invitationProtected.js",
+        "chunks": [
+          "app/invitation/[name]/page:app/invitation/[name]/page"
+        ],
+        "name": "",
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./components/invitationProtected/invitationProtected.js",
+        "chunks": [
+          "app/invitation/[name]/page:app/invitation/[name]/page"
+        ],
+        "name": "default",
+        "async": false
+      }
     }
   },
   "__edge_ssr_module_mapping__": {},
@@ -193,6 +219,9 @@
     ],
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\sendInvitations\\page": [
       "static/css/app/sendInvitations/page.css"
+    ],
+    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\invitation\\[name]\\page": [
+      "static/css/app/invitation/[name]/page.css"
     ],
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\layout": [
       "static/css/_app-client_styles_globals_modules_css.css"
@@ -479,6 +508,65 @@
     "id": "(app-client)/./components/send/send.jsx",
     "chunks": [
       "app/sendInvitations/page:app/sendInvitations/page"
+    ],
+    "name": "default",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\countDown\\countDown.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/invitation/[name]/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\invitationProtected\\invitationProtected.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/invitation/[name]/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\musicButton\\musicButton.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/invitation/[name]/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\navBar\\navBar.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/invitation/[name]/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\whereButton\\whereButton.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/invitation/[name]/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\invitationProtected\\invitationProtected.js": {
+    "id": "(app-client)/./components/invitationProtected/invitationProtected.js",
+    "chunks": [
+      "app/invitation/[name]/page:app/invitation/[name]/page"
+    ],
+    "name": "*",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\invitationProtected\\invitationProtected.js#": {
+    "id": "(app-client)/./components/invitationProtected/invitationProtected.js",
+    "chunks": [
+      "app/invitation/[name]/page:app/invitation/[name]/page"
+    ],
+    "name": "",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\invitationProtected\\invitationProtected.js#default": {
+    "id": "(app-client)/./components/invitationProtected/invitationProtected.js",
+    "chunks": [
+      "app/invitation/[name]/page:app/invitation/[name]/page"
     ],
     "name": "default",
     "async": false
