@@ -4,7 +4,7 @@ import { Howl} from 'howler';
 import styles from './musicButton.module.css';
 
 export default function Music() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [currentPosition, setCurrentPosition] = useState(0); // Estado de la posición actual
   const sound = useRef(null);
 
