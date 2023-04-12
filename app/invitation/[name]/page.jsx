@@ -10,13 +10,3 @@ const Invitation = ({params}) => {
 }
 export default Invitation
 
-export async function getServerSideProps(context) {
-  const { name } = context.query;
-
-  const response = await axios.get(`${port}/guests/${name}`);
-  const guest = response.data;
-
-  return {
-    props: { guest },
-  };
-}

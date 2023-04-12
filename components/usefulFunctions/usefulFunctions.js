@@ -3,6 +3,7 @@ import { compare } from "./encryptar";
 
 const bcrypt = require("bcryptjs");
 
+const port = process.env.NEXT_PUBLIC_PORT;
 
 export function encryptName(name) {
   // Generamos un salt (sal) aleatorio
@@ -42,3 +43,13 @@ export const createToast = (icon, title) => {
 };
 
 
+export async function getServerSideProps(context) {
+  const { name } = context.query;
+
+  const response = await fetch(`${port}/guests/${name}`);
+  const guest = response.data;
+
+  return {
+    props: { guest },
+  };
+}
