@@ -4,12 +4,12 @@ import { Howl} from 'howler';
 import styles from './musicButton.module.css';
 
 export default function Music() {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [currentPosition, setCurrentPosition] = useState(0); // Estado de la posición actual
+  const [isPlaying, setIsPlaying] = useState(true); // Cambiado a true
+  const [currentPosition, setCurrentPosition] = useState(0);
   const sound = useRef(null);
 
   function toggleMusic() {
-    setIsPlaying(prev => !prev);
+    setIsPlaying(prev => !prev); // Intercambia el valor de isPlaying
 
     if (!isPlaying) {
       sound.current = new Howl({
@@ -18,7 +18,6 @@ export default function Music() {
           setIsPlaying(false);
         },
         onload: function() {
-          // Si la canción ya se ha reproducido antes, establecer la posición actual
           if (currentPosition > 0) {
             sound.current.seek(currentPosition);
           }
@@ -26,13 +25,25 @@ export default function Music() {
       });
       sound.current.play();
     } else {
-      setCurrentPosition(sound.current.seek()); // Guardar la posición actual antes de pausar
+      setCurrentPosition(sound.current.seek());
       sound.current.pause();
     }
   }
 
-  // Pausar la música si se sale del componente
   useEffect(() => {
+    sound.current = new Howl({ // Agrega este bloque para reproducir la música al cargar
+      src: ['/utils/Even If The Sky Is Falling Down - Candelion ft. Cara Dee.mp3'],
+      onend: function() {
+        setIsPlaying(false);
+      },
+      onload: function() {
+        if (currentPosition > 0) {
+          sound.current.seek(currentPosition);
+        }
+      }
+    });
+    sound.current.play();
+
     return () => {
       if (sound.current) {
         sound.current.pause();
@@ -45,3 +56,4 @@ export default function Music() {
     </div>
   );
 }
+

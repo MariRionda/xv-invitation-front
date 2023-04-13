@@ -3,7 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./formLogin.module.css";
-import { Match, createToast, encryptName } from "../usefulFunctions/usefulFunctions";
+import {
+  Match,
+  createToast,
+  encryptName,
+} from "../usefulFunctions/usefulFunctions";
 import axios from "axios";
 
 const guestForm = {
@@ -12,7 +16,6 @@ const guestForm = {
 };
 
 const FormLogin = () => {
-
   const port = process.env.NEXT_PUBLIC_PORT;
 
   const router = useRouter();
@@ -46,15 +49,20 @@ const FormLogin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(form.name==="Giovana Mendez" && form.code==="xvgiovaM"){
+    if (
+      (form.name === "Giovana Mendez" && form.code === "xvgiovaM") ||
+      (form.name === "Eusebio Mendez" && form.code === "house1387")
+    ) {
       window.sessionStorage.setItem("authenticated", true);
       router.push("/createGuests");
-      createToast("success", "Bienvenida Giova, ya puedes cargar todos tus invitados")
-    }
-    else if (Match(allGuests, form.code)) {
+      createToast(
+        "success",
+        "Bienvenida Giova, ya puedes cargar todos tus invitados"
+      );
+    } else if (Match(allGuests, form.code)) {
       window.sessionStorage.setItem("authenticated", true);
       router.push(`/invitation/${form.name}`);
-      createToast("success", "Bienvenido " + form.name)
+      createToast("success", "Bienvenido " + form.name);
     } else {
       createToast("error", "Código incorrecto");
     }
@@ -62,46 +70,49 @@ const FormLogin = () => {
 
   return (
     <div>
-      {allGuests[0]!=="sin datos"
-      ?<div className={styles.container}>
-        <h1 className={styles.title}>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <label className={styles.label}>
-            Nombre:
-            <input
-              type="text"
-              className={styles.input}
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-            />
-          </label>
-          <label className={styles.label}>
-            Código:
-            <div className={styles.passwordContainer}>
+      {allGuests[0] !== "sin datos" ? (
+        <div className={styles.container}>
+          <h1 className={styles.title}>Login</h1>
+          <form onSubmit={handleSubmit}>
+            <label className={styles.label}>
+              Nombre:
               <input
-                type={showPassword ? "text" : "password"}
+                type="text"
                 className={styles.input}
-                name="code"
-                value={form.code}
+                name="name"
+                value={form.name}
                 onChange={handleChange}
               />
-              <button
-                type="button"
-                className={styles.showPasswordButton}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "🐵" : "🙈"}
-              </button>
-            </div>
-          </label>
-          <button type="submit" className={styles.submitButton}>
-            Ingresar
-          </button>
-        </form>
-      </div>
-      :<div className={styles.container}><div className={styles.spinner}/></div>
-      }
+            </label>
+            <label className={styles.label}>
+              Código:
+              <div className={styles.passwordContainer}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className={styles.input}
+                  name="code"
+                  value={form.code}
+                  onChange={handleChange}
+                />
+                <button
+                  type="button"
+                  className={styles.showPasswordButton}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🐵" : "🙈"}
+                </button>
+              </div>
+            </label>
+            <button type="submit" className={styles.submitButton}>
+              Ingresar
+            </button>
+          </form>
+        </div>
+      ) : (
+        <div className={styles.container}>
+          <div className={styles.spinner} />
+        </div>
+      )}
     </div>
   );
 };
