@@ -10,9 +10,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { createToast } from "../usefulFunctions/usefulFunctions";
 
-const InvitationProtected = ({firstname, lastname}) => {
+const InvitationProtected = ({name}) => {
 
   const port = process.env.NEXT_PUBLIC_PORT;
+
+  const guestName=name.split("%20")
+  console.log(guestName)
  
   const router = useRouter();
   const start = useRef(null);
@@ -31,13 +34,13 @@ const InvitationProtected = ({firstname, lastname}) => {
     if (!authenticated) {
       router.push("/");
     }
-    if(lastname!=="demo" && firstname !=="demo") getGuest()
-    if(lastname=="demo" && firstname =="demo") setGuest({firstname:"Nombre", lastname:"del Invitado", amount_guests: 2});
+    if(name!=="demo")getGuest()
+    if(name=="demo") setGuest({firstname:"Nombre", lastname:"del Invitado", amount_guests: 2});
   }, []);
 
   const getGuest = async () => {
       await axios
-      .get(`${port}/guest/${lastname}-${firstname}`)
+      .get(`${port}/guest/${guestName[0]+"-"+guestName[1]}`)
       .then((response) => {
         setGuest(response.data);
       })
