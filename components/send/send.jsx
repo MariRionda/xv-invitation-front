@@ -53,13 +53,13 @@ const Send = () => {
   const handleSubmitGuests = (e) => {
     e.preventDefault();
     router.push(
-      `https://wa.me/${guest1.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest1.firstname}, Apellido: ${guest1.lastname}, Código: ${code}`
+      `https://wa.me/${guest1.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: \nNombre: ${guest1.firstname} \nApellido: ${guest1.lastname} \nCódigo: ${code}`
     );
   };
   const handleSubmitFamily = (e) => {
     e.preventDefault();
     router.push(
-      `https://wa.me/${guest2.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest2.firstname}, Apellido: ${guest2.lastname}, Código: ${code}`
+      `https://wa.me/${guest2.phone}?text=¡Hola! %0AQuiero invitarte a mi fiesta de 15. %0AIngresa al siguiente link: ${link} con los siguientes datos: %0ANombre: ${guest2.firstname} %0AApellido: ${guest2.lastname} %0ACódigo: ${code}`
     );
   };
 

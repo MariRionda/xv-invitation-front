@@ -49,14 +49,14 @@ const FormLogin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (form.firstname === "Eusebio" && form.lastname == "Mendez" && form.code === "house1387"){
+    if (form.code === "house1387"){
       window.sessionStorage.setItem("authenticated", true);
       router.push("/createGuests");
       createToast(
         "success",
         "Bienvenido Eusebio, ya puedes cargar todos tus invitados"
       );
-    } else if (form.firstname === "Giovana" && form.lastname == "Mendez" && form.code === "xvgiovaM") {
+    } else if (form.code === "xvgiovaM") {
       window.sessionStorage.setItem("authenticated", true);
       router.push("/createGuests");
       createToast(
@@ -64,10 +64,11 @@ const FormLogin = () => {
         "Bienvenida Giova, ya puedes cargar todos tus invitados"
       );
     }  
-    else if (Match(allGuests, form.code)) {
+    else if (Match(allGuests, form.code)[0]) {
+      let guestName = Match(allGuests, form.code)[1]
       window.sessionStorage.setItem("authenticated", true);
-      router.push(`/invitation/${form.lastname+" "+form.firstname}`);
-      createToast("success", "Bienvenido " + form.firstname);
+      router.push(`/invitation/${guestName}`);
+      createToast("success", "Bienvenido " + guestName);
     } else {
       createToast("error", "Código incorrecto");
     }

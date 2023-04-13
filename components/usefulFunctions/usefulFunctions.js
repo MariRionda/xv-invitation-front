@@ -16,12 +16,14 @@ export function encryptName(name) {
 
 export function Match(guests, encrypt) {
   let state = false
+  let name
   guests?.forEach((guest) => {
     if (compare(guest.firstname, guest.lastname, encrypt)) {
       state = true
+      name = guest.lastname +" "+ guest.firstname
     }
   });
-  return state;
+  return [state, name];
 }
 
 export const createToast = (icon, title) => {
