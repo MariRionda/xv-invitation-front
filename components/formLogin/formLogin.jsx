@@ -10,8 +10,6 @@ import {
 import axios from "axios";
 
 const guestForm = {
-  firstname: "",
-  lastname: "",
   code: "",
 };
 
@@ -78,28 +76,8 @@ const FormLogin = () => {
     <div>
       {allGuests[0] !== "sin datos" ? (
         <div className={styles.container}>
-          <h1 className={styles.title}>Login</h1>
+          <h1 className={styles.title}>Ingresa el Código para ver la invitación de Giovana: </h1>
           <form onSubmit={handleSubmit}>
-            <label className={styles.label}>
-              Nombre:
-              <input
-                type="text"
-                className={styles.input}
-                name="firstname"
-                value={form.firstname}
-                onChange={handleChange}
-              />
-            </label>
-            <label className={styles.label}>
-              Apellido:
-              <input
-                type="text"
-                className={styles.input}
-                name="lastname"
-                value={form.lastname}
-                onChange={handleChange}
-              />
-            </label>
             <label className={styles.label}>
               Código:
               <div className={styles.passwordContainer}>
