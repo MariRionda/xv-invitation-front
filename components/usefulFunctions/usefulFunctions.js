@@ -17,7 +17,7 @@ export function encryptName(name) {
 export function Match(guests, encrypt) {
   let state = false
   guests?.forEach((guest) => {
-    if (compare(guest.name, encrypt)) {
+    if (compare(guest.firstname, guest.lastname, encrypt)) {
       state = true
     }
   });

@@ -1,10 +1,10 @@
 import InvitationProtected from '../../../components/invitationProtected/invitationProtected'
 
 const Invitation = ({params}) => {
-  const {name} = params
+  const {lastname, firstname} = params
   return (
     <div>
-      <InvitationProtected name={name}/>
+      <InvitationProtected firstname={firstname} lastname={lastname}/>
     </div>
   )
 }

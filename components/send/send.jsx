@@ -43,23 +43,23 @@ const Send = () => {
 
   function handleSelectGuests(e) {
     setGuest1(guests[e.target.value]);
-    setCode(encrypted(guests[e.target.value].name));
+    setCode(encrypted(guests[e.target.value].lastname + " " + guests[e.target.value].firstname));
   }
   function handleSelectFamily(e) {
     setGuest2(family[e.target.value]);
-    setCode(encrypted(family[e.target.value].name));
+    setCode(encrypted(family[e.target.value].lastname + " " + family[e.target.value].firstname));
   }
 
   const handleSubmitGuests = (e) => {
     e.preventDefault();
     router.push(
-      `https://wa.me/${guest1.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest1.name}, Código: ${code}`
+      `https://wa.me/${guest1.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest1.firstname}, Apellido: ${guest1.lastname}, Código: ${code}`
     );
   };
   const handleSubmitFamily = (e) => {
     e.preventDefault();
     router.push(
-      `https://wa.me/${guest2.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest2.name}, Código: ${code}`
+      `https://wa.me/${guest2.phone}?text=¡Hola! Quiero invitarte a mi fiesta de 15. Ingresa al siguiente link: ${link} con los siguientes datos: Nombre: ${guest1.firstname}, Apellido: ${guest1.lastname}, Código: ${code}`
     );
   };
 
@@ -75,7 +75,7 @@ const Send = () => {
                   <option defaultValue>-</option>
                   {guests?.map((g, i) => (
                     <option key={g.id} value={i}>
-                      {g.name}
+                      {g.firstname} {g.lastname}
                     </option>
                   ))}
                 </select>
@@ -93,7 +93,7 @@ const Send = () => {
                   <option defaultValue>-</option>
                   {family?.map((g, j) => (
                     <option key={g.id} value={j}>
-                      {g.name}
+                    {g.firstname} {g.lastname}
                     </option>
                   ))}
                 </select>

@@ -6,12 +6,12 @@ import styles from "./formLogin.module.css";
 import {
   Match,
   createToast,
-  encryptName,
 } from "../usefulFunctions/usefulFunctions";
 import axios from "axios";
 
 const guestForm = {
-  name: "",
+  firstname: "",
+  lastname: "",
   code: "",
 };
 
@@ -49,20 +49,25 @@ const FormLogin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (
-      (form.name === "Giovana Mendez" && form.code === "xvgiovaM") ||
-      (form.name === "Eusebio Mendez" && form.code === "house1387")
-    ) {
+    if (form.firstname === "Eusebio" && form.lastname == "Mendez" && form.code === "house1387"){
+      window.sessionStorage.setItem("authenticated", true);
+      router.push("/createGuests");
+      createToast(
+        "success",
+        "Bienvenido Eusebio, ya puedes cargar todos tus invitados"
+      );
+    } else if (form.firstname === "Giovana" && form.lastname == "Mendez" && form.code === "xvgiovaM") {
       window.sessionStorage.setItem("authenticated", true);
       router.push("/createGuests");
       createToast(
         "success",
         "Bienvenida Giova, ya puedes cargar todos tus invitados"
       );
-    } else if (Match(allGuests, form.code)) {
+    }  
+    else if (Match(allGuests, form.code)) {
       window.sessionStorage.setItem("authenticated", true);
-      router.push(`/invitation/${form.name}`);
-      createToast("success", "Bienvenido " + form.name);
+      router.push(`/invitation/${form.lastname}/${form.firstname}`);
+      createToast("success", "Bienvenido " + form.firstname);
     } else {
       createToast("error", "Código incorrecto");
     }
@@ -79,8 +84,18 @@ const FormLogin = () => {
               <input
                 type="text"
                 className={styles.input}
-                name="name"
-                value={form.name}
+                name="firstname"
+                value={form.firstname}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.label}>
+              Apellido:
+              <input
+                type="text"
+                className={styles.input}
+                name="lastname"
+                value={form.lastname}
                 onChange={handleChange}
               />
             </label>

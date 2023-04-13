@@ -9,7 +9,8 @@ import {  createToast } from "../usefulFunctions/usefulFunctions";
 
 
 const guestData = {
-  name: "",
+  lastname: "",
+  firstname: "",
   state: "No confirmó",
   phone: "",
   amount_guests: 0,
@@ -41,7 +42,7 @@ const NewGuest = () => {
         setGuest(guestData);
       })
       .catch((error) => {
-        console.error(error);
+        createToast("error", response.data.msg);
       });
   };
   const getGuests = async () => {
@@ -79,7 +80,7 @@ const NewGuest = () => {
         <div>
         <h1 style="font-size: 17px;">Eliminar invitado</h1>
         <select id="guest-select" class="swal2-input" style="font-size: 15px;">
-          ${allGuests?.map(guest => `<option value="${guest.id}">${guest.name}</option>`)}
+          ${allGuests?.map(guest => `<option value="${guest.id}">${guest.lastname} ${guest.firstname}</option>`)}
         </select>
         </div>
       `,
@@ -106,7 +107,11 @@ const NewGuest = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!guest.name) {
+    if (!guest.lastname) {
+      createToast("error", "Debe introducir apellido");
+      return;
+    }
+    if (!guest.firstname) {
       createToast("error", "Debe introducir nombre");
       return;
     }
@@ -122,7 +127,8 @@ const NewGuest = () => {
       createToast("error", "Debe introducir teléfono válido");
       return;
     }
-    guest.name = guest.name.trim()
+    guest.lastname = guest.lastname.trim()
+    guest.firstname = guest.firstname.trim()
     guest.phone = "+549" + guest.phone;
     sendData(guest);
   };
@@ -132,12 +138,25 @@ const NewGuest = () => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputWrapper}>
           <label className={styles.label}>
-            <p>Nombre completo:</p>
+            <p>Apellido:</p>
             <input
               type="text"
-              name="name"
+              name="lastname"
+              placeholder="ingrese el apellido"
+              value={guest.lastname}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </label>
+        </div>
+        <div className={styles.inputWrapper}>
+          <label className={styles.label}>
+            <p>Nombre:</p>
+            <input
+              type="text"
+              name="firstname"
               placeholder="ingrese el nombre"
-              value={guest.name}
+              value={guest.firstname}
               onChange={handleChange}
               className={styles.input}
             />
@@ -183,13 +202,15 @@ const NewGuest = () => {
             <div className={styles.ListSubTitle}>👨‍👩‍👧‍👦</div>
           </div>
           {allGuests[0]=="sin datos"
-          ? <div>Cargando...</div>
+          ? <div className={styles.spinnerBox}>
+              <div className={styles.spinner}></div>
+            </div>
           :allGuests.length > 0
             ? allGuests.map((guest, i) => {
                 return (
                   <div className={styles.ListContainer} key={i}>
                     <div className={styles.List} style={{width:"20px"}}>{i+1}</div>
-                    <div className={styles.List} style={{width:"150px"}}>✔️{guest.name}</div>
+                    <div className={styles.List} style={{width:"150px"}}>✔️{guest.lastname} {guest.firstname}</div>
                     <div className={styles.List} style={{width:"120px"}}>{guest.phone} </div>
                     <div className={styles.List}>{guest.amount_guests} </div>
                   </div>
@@ -199,7 +220,7 @@ const NewGuest = () => {
         </div>
         <div className={styles.divButtons}>
           <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
-          <button className={styles.button} onClick={()=>{router.push("/invitation/demo")}}>Ver Invitación</button>
+          <button className={styles.button} onClick={()=>{router.push("/invitation/demo/demo")}}>Ver Invitación</button>
           <button className={styles.button} onClick={()=>{router.push("/sendInvitations")}}>Enviar invitaciones</button>
         </div>
       </div>

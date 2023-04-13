@@ -10,7 +10,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { createToast } from "../usefulFunctions/usefulFunctions";
 
-const InvitationProtected = ({name}) => {
+const InvitationProtected = ({firstname, lastname}) => {
 
   const port = process.env.NEXT_PUBLIC_PORT;
  
@@ -31,13 +31,13 @@ const InvitationProtected = ({name}) => {
     if (!authenticated) {
       router.push("/");
     }
-    if(name!=="demo") getGuest()
-    if(name=="demo") setGuest({name: "Nombre del Invitado", amount_guests: 2});
+    if(lastname!=="demo" && firstname !=="demo") getGuest()
+    if(lastname=="demo" && firstname =="demo") setGuest({firstname:"Nombre", lastname:"del Invitado", amount_guests: 2});
   }, []);
 
   const getGuest = async () => {
       await axios
-      .get(`${port}/guest/${name}`)
+      .get(`${port}/guest/${lastname}-${firstname}`)
       .then((response) => {
         setGuest(response.data);
       })
@@ -81,7 +81,8 @@ const InvitationProtected = ({name}) => {
       if (result.isConfirmed) {
         const selectedGuests = document.getElementById("guest-select").value;
         const obj2={
-          name: guest.name,
+          firstname: guest.firstname,
+          lastname: guest.lastname,
           state: "Asistiré",
           amount_guests: guest.amount_guests,
           amount_confirm: selectedGuests,
@@ -112,7 +113,8 @@ const InvitationProtected = ({name}) => {
     }).then((result) => {
       if (result.isConfirmed) {
         const obj={
-          name: guest.name,
+          firstname: guest.firstname,
+          lastname: guest.lastname,
           state: "No asistiré",
           amount_guests: guest.amount_guests,
           amount_confirm: 0,
@@ -194,7 +196,7 @@ const InvitationProtected = ({name}) => {
       <section ref={assistance} className={styles.confirm}>
         <div className={styles.guestTitle}>Datos del invitado</div>
         <div className={styles.guest}>
-        <div className={styles.guestName}>{guest.name}</div>
+        <div className={styles.guestName}>{guest.firstname} {guest.lastname}</div>
         <div className={styles.guestAmount}>{`Invitación válida para ${guest.amount_guests} personas`}</div>
         </div>
         <WhereButton title={'CONFIRMAR ASISTENCIA'} click={handleAttend}/>

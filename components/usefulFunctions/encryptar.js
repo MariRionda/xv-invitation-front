@@ -9,8 +9,8 @@ export const encrypted = (name) => {
 
 
 
-export const compare = (name, enc) => {
-  return (encrypted(name) === enc);
+export const compare = (firstname, lastname, enc) => {
+  return (encrypted(lastname+" "+firstname) === enc);
 };
 
 
