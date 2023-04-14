@@ -75,7 +75,7 @@ const Send = () => {
                   <option defaultValue>-</option>
                   {guests?.map((g, i) => (
                     <option key={g.id} value={i}>
-                      {g.firstname} {g.lastname}
+                      {g.lastname} {g.firstname}
                     </option>
                   ))}
                 </select>
@@ -93,7 +93,7 @@ const Send = () => {
                   <option defaultValue>-</option>
                   {family?.map((g, j) => (
                     <option key={g.id} value={j}>
-                    {g.firstname} {g.lastname}
+                      {g.lastname} {g.firstname}
                     </option>
                   ))}
                 </select>

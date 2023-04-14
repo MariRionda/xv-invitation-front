@@ -14,13 +14,17 @@ const InvitationProtected = ({name}) => {
 
   const port = process.env.NEXT_PUBLIC_PORT;
 
+  let closingDate = new Date("2023-04-22").getTime();
+  let currentDate = new Date().getTime();
+
   const guestName=name.split("%20")
-  console.log(guestName)
  
   const router = useRouter();
+  
   const start = useRef(null);
   const where = useRef(null);
   const assistance = useRef(null);
+
 
 
   const scrollToSection = (sectionRef) => {
@@ -58,6 +62,7 @@ const InvitationProtected = ({name}) => {
   };
 
   const handleAttend = () => {
+    if(currentDate <= closingDate){
     Swal.fire({
       html: `
       <div>
@@ -102,8 +107,18 @@ const InvitationProtected = ({name}) => {
     })
     ;
   }
+  else{
+    Swal.fire({
+      icon: 'error',
+      title: '¡Lo siento!',
+      text: 'Ya paso la fecha límite para confirmar',
+      footer: '<a>Comunicate a mi wpp</a>'
+    })
+  }
+  }
 
   const handleNotAttend = () => {
+    if(currentDate <= closingDate){
     Swal.fire({
       title: '¿Seguro?',
       text: "Estas por confirmar que NO vendras a mi fiesta",
@@ -132,7 +147,15 @@ const InvitationProtected = ({name}) => {
         createToast("error", "¡Cancelado! Por favor, confira que si vendras a mi fiesta...");
       }
     })
-
+  }
+  else{
+    Swal.fire({
+      icon: 'error',
+      title: '¡Lo siento!',
+      text: 'Ya paso la fecha límite para confirmar',
+      footer: '<a>Comunicate a mi wpp</a>'
+    })
+  }
   }
 
   const scheduleEvent = () => {
@@ -174,7 +197,7 @@ const InvitationProtected = ({name}) => {
       <div className={styles.counter}>
         <div className={styles.flower1}></div>
         <div className={styles.buterfly1}></div>
-        <div className={styles.countBack}><Countdown date="2023-04-30T00:00:00.000Z" /></div>
+        <div className={styles.countBack}><Countdown date="2023-04-30T01:00:00.000Z" /></div>
         <div className={styles.codeBack}>
           <div className={styles.dressCode}>
             <div className={styles.dressTitle}>Dress Code</div>
@@ -203,7 +226,7 @@ const InvitationProtected = ({name}) => {
         <div className={styles.guestAmount}>{`Invitación válida para ${guest.amount_guests} personas`}</div>
         </div>
         <WhereButton title={'CONFIRMAR ASISTENCIA'} click={handleAttend}/>
-        <div>{"(Confirmar antes del 20/04/2023)"}</div>
+        <div>{"(Confirmar antes del 22/04/2023)"}</div>
         <WhereButton title={'No Asistiré'} click={handleNotAttend}/>
       </section>
       <Music />
