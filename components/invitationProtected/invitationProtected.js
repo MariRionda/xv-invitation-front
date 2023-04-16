@@ -229,7 +229,7 @@ const InvitationProtected = ({ name }) => {
         <div className={styles.sec}>
           <div className={styles.subtitle}>Día</div>
           <div className={styles.text}>Sábado 29 de abril - 22hs</div>
-          <WhereButton title={"AGENDAR"} click={scheduleEvent} />
+          <WhereButton title={'AGENDAR'} click={scheduleEvent}/>  
         </div>
         <div className={styles.sec}>
           <div className={styles.subtitle}>Lugar</div>
