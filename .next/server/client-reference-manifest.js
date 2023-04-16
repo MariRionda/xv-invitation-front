@@ -488,6 +488,13 @@ self.__RSC_MANIFEST={
       "static/css/app/invitation/[name]/page.css"
     ]
   },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\footer\\footer.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/invitation/[name]/page.css"
+    ]
+  },
   "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\invitationProtected\\invitationProtected.module.css#": {
     "id": "null",
     "name": "",

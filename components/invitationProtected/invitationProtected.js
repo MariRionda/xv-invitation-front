@@ -9,6 +9,7 @@ import WhereButton from "../whereButton/whereButton";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { createToast } from "../usefulFunctions/usefulFunctions";
+import Footer from "../footer/footer";
 
 const InvitationProtected = ({ name }) => {
   const port = process.env.NEXT_PUBLIC_PORT;
@@ -259,6 +260,7 @@ const InvitationProtected = ({ name }) => {
         <WhereButton title={"No Asistiré"} click={handleNotAttend} />
       </section>
       <Music />
+      <Footer/>
     </div>
   );
 };
