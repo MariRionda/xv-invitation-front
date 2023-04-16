@@ -4,8 +4,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./send.module.css";
 import { encrypted, getGuests } from "../usefulFunctions/usefulFunctions";
+import Loading from "../loading/loading";
+import { IoRose } from 'react-icons/io5';
+import { GiAmpleDress } from 'react-icons/gi';
+import { FiHeart } from 'react-icons/fi';
 
 const Send = () => {
+
+  let iconsArray = [IoRose,GiAmpleDress,FiHeart];
+
   const router = useRouter();
 
   const port = process.env.NEXT_PUBLIC_PORT;
@@ -18,6 +25,14 @@ const Send = () => {
   const [allGuests, setAllGuest] = useState(["sin datos"]);
   const [guests, setGuests] = useState([]);
   const [family, setFamily] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(currentIndex => (currentIndex + 1) % iconsArray.length) // Cambia de icono cada segundo
+    }, 500);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   //FUNCION PARA TRAER TODOS LOS INVITADOS
   const getGuests = async () => {
@@ -119,9 +134,7 @@ const Send = () => {
           </div>
         </div>
       ) : (
-        <div className={styles.container}>
-          <div className={styles.spinner} />
-        </div>
+        <Loading currentIndex={currentIndex} iconsArray={iconsArray}/>
       )}
     </div>
   );

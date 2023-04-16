@@ -31,13 +31,16 @@ const FormLogin = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(currentIndex => (currentIndex + 1) % iconsArray.length) // Cambia de icono cada segundo
-    }, 1000);
+    }, 500);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
   
   useEffect(() => {
-    getGuests();
+    setTimeout(()=>{
+      getGuests();
+    }, 2000)
+    
  }, []);
 
 
