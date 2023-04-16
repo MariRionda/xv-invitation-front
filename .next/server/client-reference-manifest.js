@@ -156,32 +156,6 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./components/send/send.jsx": {
-      "*": {
-        "id": "(sc_client)/./components/send/send.jsx",
-        "chunks": [
-          "app/sendInvitations/page:app/sendInvitations/page"
-        ],
-        "name": "*",
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./components/send/send.jsx",
-        "chunks": [
-          "app/sendInvitations/page:app/sendInvitations/page"
-        ],
-        "name": "",
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./components/send/send.jsx",
-        "chunks": [
-          "app/sendInvitations/page:app/sendInvitations/page"
-        ],
-        "name": "default",
-        "async": false
-      }
-    },
     "(app-client)/./components/invitationProtected/invitationProtected.js": {
       "*": {
         "id": "(sc_client)/./components/invitationProtected/invitationProtected.js",
@@ -207,6 +181,32 @@ self.__RSC_MANIFEST={
         "name": "default",
         "async": false
       }
+    },
+    "(app-client)/./components/send/send.jsx": {
+      "*": {
+        "id": "(sc_client)/./components/send/send.jsx",
+        "chunks": [
+          "app/sendInvitations/page:app/sendInvitations/page"
+        ],
+        "name": "*",
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./components/send/send.jsx",
+        "chunks": [
+          "app/sendInvitations/page:app/sendInvitations/page"
+        ],
+        "name": "",
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./components/send/send.jsx",
+        "chunks": [
+          "app/sendInvitations/page:app/sendInvitations/page"
+        ],
+        "name": "default",
+        "async": false
+      }
     }
   },
   "__edge_ssr_module_mapping__": {},
@@ -217,11 +217,11 @@ self.__RSC_MANIFEST={
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\createGuests\\page": [
       "static/css/app/createGuests/page.css"
     ],
-    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\sendInvitations\\page": [
-      "static/css/app/sendInvitations/page.css"
-    ],
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\invitation\\[name]\\page": [
       "static/css/app/invitation/[name]/page.css"
+    ],
+    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\sendInvitations\\page": [
+      "static/css/app/sendInvitations/page.css"
     ],
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\layout": [
       "static/css/_app-client_styles_globals_modules_css.css"
@@ -481,37 +481,6 @@ self.__RSC_MANIFEST={
     "name": "default",
     "async": false
   },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.module.css#": {
-    "id": "null",
-    "name": "",
-    "chunks": [
-      "static/css/app/sendInvitations/page.css"
-    ]
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.jsx": {
-    "id": "(app-client)/./components/send/send.jsx",
-    "chunks": [
-      "app/sendInvitations/page:app/sendInvitations/page"
-    ],
-    "name": "*",
-    "async": false
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.jsx#": {
-    "id": "(app-client)/./components/send/send.jsx",
-    "chunks": [
-      "app/sendInvitations/page:app/sendInvitations/page"
-    ],
-    "name": "",
-    "async": false
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.jsx#default": {
-    "id": "(app-client)/./components/send/send.jsx",
-    "chunks": [
-      "app/sendInvitations/page:app/sendInvitations/page"
-    ],
-    "name": "default",
-    "async": false
-  },
   "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\countDown\\countDown.module.css#": {
     "id": "null",
     "name": "",
@@ -567,6 +536,37 @@ self.__RSC_MANIFEST={
     "id": "(app-client)/./components/invitationProtected/invitationProtected.js",
     "chunks": [
       "app/invitation/[name]/page:app/invitation/[name]/page"
+    ],
+    "name": "default",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.module.css#": {
+    "id": "null",
+    "name": "",
+    "chunks": [
+      "static/css/app/sendInvitations/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.jsx": {
+    "id": "(app-client)/./components/send/send.jsx",
+    "chunks": [
+      "app/sendInvitations/page:app/sendInvitations/page"
+    ],
+    "name": "*",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.jsx#": {
+    "id": "(app-client)/./components/send/send.jsx",
+    "chunks": [
+      "app/sendInvitations/page:app/sendInvitations/page"
+    ],
+    "name": "",
+    "async": false
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\send\\send.jsx#default": {
+    "id": "(app-client)/./components/send/send.jsx",
+    "chunks": [
+      "app/sendInvitations/page:app/sendInvitations/page"
     ],
     "name": "default",
     "async": false

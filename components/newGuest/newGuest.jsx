@@ -1,12 +1,10 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./newGuest.module.css";
 import Swal from "sweetalert2";
-import {  createToast } from "../usefulFunctions/usefulFunctions";
-
+import { createToast } from "../usefulFunctions/usefulFunctions";
 
 const guestData = {
   lastname: "",
@@ -18,10 +16,9 @@ const guestData = {
 };
 
 const NewGuest = () => {
-
   const port = process.env.NEXT_PUBLIC_PORT;
 
-  const router = useRouter();  
+  const router = useRouter();
 
   const [guest, setGuest] = useState(guestData);
   const [allGuests, setAllGuest] = useState(["sin datos"]);
@@ -74,13 +71,16 @@ const NewGuest = () => {
     });
   };
 
-  const handleDelete = ()=>{
+  const handleDelete = () => {
     Swal.fire({
       html: `
         <div>
         <h1 style="font-size: 17px;">Eliminar invitado</h1>
         <select id="guest-select" class="swal2-input" style="font-size: 15px;">
-          ${allGuests?.map(guest => `<option value="${guest.id}">${guest.lastname} ${guest.firstname}</option>`)}
+          ${allGuests?.map(
+            (guest) =>
+              `<option value="${guest.id}">${guest.lastname} ${guest.firstname}</option>`
+          )}
         </select>
         </div>
       `,
@@ -88,22 +88,22 @@ const NewGuest = () => {
       confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
       confirmButtonColor: "#e7c6c6",
-      cancelButtonColor: '#c7b6d7',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const selectedGuestId = document.getElementById("guest-select").value;
-        deleteGuests(selectedGuestId.toString(''))
-        // Aquí eliminarías el invitado seleccionado por ID
-        .then(()=>{
-          createToast("success", "Invitado eliminado correctamente");
-        })
-      }
+      cancelButtonColor: "#c7b6d7",
     })
-    .catch(()=>{
-      createToast("error", "No se pudo eliminar");
-    })
-    ;
-  }
+      .then((result) => {
+        if (result.isConfirmed) {
+          const selectedGuestId = document.getElementById("guest-select").value;
+          deleteGuests(selectedGuestId.toString(""))
+            // Aquí eliminarías el invitado seleccionado por ID
+            .then(() => {
+              createToast("success", "Invitado eliminado correctamente");
+            });
+        }
+      })
+      .catch(() => {
+        createToast("error", "No se pudo eliminar");
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -127,8 +127,8 @@ const NewGuest = () => {
       createToast("error", "Debe introducir teléfono válido");
       return;
     }
-    guest.lastname = guest.lastname.trim()
-    guest.firstname = guest.firstname.trim()
+    guest.lastname = guest.lastname.trim();
+    guest.firstname = guest.firstname.trim();
     guest.phone = "+549" + guest.phone;
     sendData(guest);
   };
@@ -196,32 +196,54 @@ const NewGuest = () => {
         <div className={styles.listTitle}>Invitados</div>
         <div>
           <div className={styles.ListContainer}>
-            <div className={styles.ListSubTitle} style={{width:"20px"}}>👥</div>
-            <div className={styles.ListSubTitle} style={{width:"150px"}}>Nombre</div>
-            <div className={styles.ListSubTitle} style={{width:"120px"}}>Telefono📲</div>
+            <div className={styles.ListSubTitle} style={{ width: "20px" }}>👥</div>
+            <div className={styles.ListSubTitle} style={{ width: "150px" }}>Nombre</div>
+            <div className={styles.ListSubTitle} style={{ width: "120px" }}>Telefono📲</div>
             <div className={styles.ListSubTitle}>👨‍👩‍👧‍👦</div>
           </div>
-          {allGuests[0]=="sin datos"
-          ? <div className={styles.spinnerBox}>
+          {allGuests[0] == "sin datos" ? (
+            <div className={styles.spinnerBox}>
               <div className={styles.spinner}></div>
             </div>
-          :allGuests.length > 0
-            ? allGuests.map((guest, i) => {
-                return (
-                  <div className={styles.ListContainer} key={i}>
-                    <div className={styles.List} style={{width:"20px"}}>{i+1}</div>
-                    <div className={styles.List} style={{width:"150px"}}>✔️{guest.lastname} {guest.firstname}</div>
-                    <div className={styles.List} style={{width:"120px"}}>{guest.phone} </div>
-                    <div className={styles.List}>{guest.amount_guests} </div>
+          ) : allGuests.length > 0 ? (
+            allGuests.map((guest, i) => {
+              return (
+                <div className={styles.ListContainer} key={i}>
+                  <div className={styles.List} style={{ width: "20px" }}>
+                    {i + 1}
                   </div>
-                );
-              })
-            : null}
+                  <div className={styles.List} style={{ width: "150px" }}>
+                    ✔️{guest.lastname} {guest.firstname}
+                  </div>
+                  <div className={styles.List} style={{ width: "120px" }}>
+                    {guest.phone}{" "}
+                  </div>
+                  <div className={styles.List}>{guest.amount_guests} </div>
+                </div>
+              );
+            })
+          ) : null}
         </div>
         <div className={styles.divButtons}>
-          <button className={styles.button} onClick={handleDelete}>Quitar un invitado</button>
-          <button className={styles.button} onClick={()=>{router.push("/invitation/demo/demo")}}>Ver Invitación</button>
-          <button className={styles.button} onClick={()=>{router.push("/sendInvitations")}}>Enviar invitaciones</button>
+          <button className={styles.button} onClick={handleDelete}>
+            Quitar un invitado
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              router.push("/invitation/demo");
+            }}
+          >
+            Ver Invitación
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              router.push("/sendInvitations");
+            }}
+          >
+            Enviar invitaciones
+          </button>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./send.module.css";
-import { encrypted } from "../usefulFunctions/encryptar";
+import { encrypted, getGuests } from "../usefulFunctions/usefulFunctions";
 
 const Send = () => {
   const router = useRouter();
@@ -19,14 +19,14 @@ const Send = () => {
   const [guests, setGuests] = useState([]);
   const [family, setFamily] = useState([]);
 
-
+  //FUNCION PARA TRAER TODOS LOS INVITADOS
   const getGuests = async () => {
     await axios
       .get(`${port}/guest/all`)
       .then((response) => {
         setAllGuest(response.data);
-        setFamily(response.data.filter(g=>g.amount_guests>1))
-        setGuests(response.data.filter(g=>g.amount_guests===1))
+        setFamily(response.data.filter((g) => g.amount_guests > 1));
+        setGuests(response.data.filter((g) => g.amount_guests === 1));
       })
       .catch((error) => {
         console.error(error);
@@ -43,11 +43,19 @@ const Send = () => {
 
   function handleSelectGuests(e) {
     setGuest1(guests[e.target.value]);
-    setCode(encrypted(guests[e.target.value].lastname + " " + guests[e.target.value].firstname));
+    setCode(
+      encrypted(
+        guests[e.target.value].lastname + " " + guests[e.target.value].firstname
+      )
+    );
   }
   function handleSelectFamily(e) {
     setGuest2(family[e.target.value]);
-    setCode(encrypted(family[e.target.value].lastname + " " + family[e.target.value].firstname));
+    setCode(
+      encrypted(
+        family[e.target.value].lastname + " " + family[e.target.value].firstname
+      )
+    );
   }
 
   const handleSubmitGuests = (e) => {
@@ -71,7 +79,10 @@ const Send = () => {
             <form onSubmit={handleSubmitGuests} className={styles.form}>
               <div className={styles.inputWrapper}>
                 <p>Seleccionar invitado:</p>
-                <select id="guest-select" onChange={(e) => handleSelectGuests(e)}>
+                <select
+                  id="guest-select"
+                  onChange={(e) => handleSelectGuests(e)}
+                >
                   <option defaultValue>-</option>
                   {guests?.map((g, i) => (
                     <option key={g.id} value={i}>
@@ -89,7 +100,10 @@ const Send = () => {
             <form onSubmit={handleSubmitFamily} className={styles.form}>
               <div className={styles.inputWrapper}>
                 <p>Seleccionar invitado (Familiar):</p>
-                <select id="guest-select" onChange={(e) => handleSelectFamily(e)}>
+                <select
+                  id="guest-select"
+                  onChange={(e) => handleSelectFamily(e)}
+                >
                   <option defaultValue>-</option>
                   {family?.map((g, j) => (
                     <option key={g.id} value={j}>
@@ -114,4 +128,3 @@ const Send = () => {
 };
 
 export default Send;
-

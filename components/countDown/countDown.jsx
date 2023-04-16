@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from './countDown.module.css'
 
 const Countdown = ({ date }) => {
+
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -16,7 +17,6 @@ const Countdown = ({ date }) => {
       setMinutes(Math.floor((time / 1000 / 60) % 60));
       setSeconds(Math.floor((time / 1000) % 60));
     }, 1000);
-
     return () => clearInterval(interval);
   }, [date]);
 

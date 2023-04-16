@@ -1,19 +1,29 @@
 import Swal from "sweetalert2";
-import { compare } from "./encryptar";
-
-const bcrypt = require("bcryptjs");
-
+// import { compare } from "./encryptar";
+// const bcrypt = require("bcryptjs");
 const port = process.env.NEXT_PUBLIC_PORT;
+const crypto = require('crypto');
 
-export function encryptName(name) {
-  // Generamos un salt (sal) aleatorio
-  const salt = bcrypt.genSaltSync(10);
-  // Encriptamos el nombre con el salt generado
-  const hashedName = bcrypt.hashSync(name, salt);
-  // Devolvemos el nombre encriptado
-  return hashedName;
-}
 
+//FUNCION PARA ENCRIPTAR NOMBRE
+export const encrypted = (name) => {
+  const hash = crypto.createHash('md5').update(name).digest('hex').slice(0, 10);
+  return hash;
+};
+
+//FUNCION PARA COMPARAR NOMBRE CON EL CÓDIGO
+export const compare = (firstname, lastname, enc) => {
+  return (encrypted(lastname+" "+firstname) === enc);
+};
+
+
+// export function encryptName(name) {
+//   const salt = bcrypt.genSaltSync(10);
+//   const hashedName = bcrypt.hashSync(name, salt);
+//   return hashedName;
+// }
+
+//FUNCION QUE RECORRE LA LISTA DE NOMBRE Y LOS COMPARA CON EL CÓDIGO INGRESADO
 export function Match(guests, encrypt) {
   let state = false
   let name
@@ -26,6 +36,7 @@ export function Match(guests, encrypt) {
   return [state, name];
 }
 
+//FUNCION PARA EJECUTAR EL SWEETALERT
 export const createToast = (icon, title) => {
   const Toast = Swal.mixin({
     toast: true,
@@ -44,13 +55,11 @@ export const createToast = (icon, title) => {
   });
 };
 
-
+//FUNCION QUE PERMITE PASAR PARAMETROS POR QUERY (puede estar en cualquier lugar, pero tiene que estar)
 export async function getServerSideProps(context) {
   const { name } = context.query;
-
   const response = await fetch(`${port}/guests/${name}`);
   const guest = response.data;
-
   return {
     props: { guest },
   };
