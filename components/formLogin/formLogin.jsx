@@ -93,6 +93,8 @@ const FormLogin = () => {
     <div>
       {allGuests[0] !== "sin datos" ? (
         <div className={styles.container}>
+          <div className={styles.whiteFlower}></div>
+          <div className={styles.whiteButerfly}></div>
           <h1 className={styles.title}>
             Ingresa el Código para ver la invitación de Giovana:{" "}
           </h1>

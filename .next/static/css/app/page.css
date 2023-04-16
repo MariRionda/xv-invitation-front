@@ -39,24 +39,25 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/formLogin/formLogin.module.css ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************/
 .formLogin_container__KzENh {
+  font-family: TertiaryFont;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #b09494;
-  border-radius: 10px;
-  height: 100dvh;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--alternate-color);
 }
 
 .formLogin_title__p7Nzq {
-  font-size: 28px;
-  color: #ffcccc;
+  font-size: 22px;
+  text-align: center;
+  color: var(--tertiary-color);
   margin-bottom: 20px;
 }
 
 .formLogin_label___dAfM {
-  font-size: 14px;
-  color: #ffcccc;
+  font-size: 16px;
+  color: var(--background-color);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -71,7 +72,7 @@
   color: black;
   border-radius: 5px;
   border: none;
-  background-color: #e8e0e0;
+  background-color: var(--border-color);
   margin-top: 5px;
 }
 
@@ -84,14 +85,15 @@
   background-color: transparent;
   border: none;
   font-size: 20px;
-  color: #ffcccc;
+  color: var(--primary-color);
   margin-left: 5px;
   cursor: pointer;
 }
 
 .formLogin_submitButton__j920Q {
-  background-color: #ffcccc;
-  color: #fff;
+  font-family: TertiaryFont;
+  background-color: var(--tertiary-color);
+  color: var(--background-color);
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -102,11 +104,11 @@
 }
 
 .formLogin_submitButton__j920Q:hover {
-  background-color: #ffc2c2;
+  background-color: var(--primary-color);
 }
 .formLogin_spinner__SbIoy {
   margin-top: 50px;
-  border: 4px solid rgba(0, 0, 0, 0.1);
+  border: 4px solid var(--tertiary-color);
   border-left-color: #333;
   border-radius: 50%;
   width: 2rem;
@@ -118,4 +120,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+.formLogin_whiteFlower__hEDGu{
+  background-image: url(/_next/static/media/florBlanca.d3bfbffc.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  margin-top: -350px;
+  margin-left: -200px;
+  transform: rotate(45deg);
+}
+.formLogin_whiteButerfly__qedMu{
+  background-image: url(/_next/static/media/mariposaBlanca.335a5be4.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  margin-top: 400px;
+  margin-left: 200px;
+  /* transform: rotate(45deg); */
 }
