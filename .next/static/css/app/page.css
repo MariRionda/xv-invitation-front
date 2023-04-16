@@ -1,3 +1,40 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/loading/loading.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.loading_loading__w8Gp2 {
+    background-color: #b09494;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: aliceblue;
+  }
+
+.loading_loadingIcon__1PQwY {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s ease-out;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .loading_loadingIconActive__gHjib {
+    opacity: 1;
+    transform: scale(1);
+    animation: loading_pulse___LKcd 1s ease-out infinite;
+  }
+  
+  @keyframes loading_pulse___LKcd {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/formLogin/formLogin.module.css ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************/

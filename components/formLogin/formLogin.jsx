@@ -4,12 +4,20 @@ import { useState, useEffect } from "react";
 import styles from "./formLogin.module.css";
 import { Match, createToast } from "../usefulFunctions/usefulFunctions";
 import axios from "axios";
+import Loading from "../loading/loading";
+import { IoRose } from 'react-icons/io5';
+import { GiAmpleDress } from 'react-icons/gi';
+import { FiHeart } from 'react-icons/fi';
+
 
 const guestForm = {
   code: "",
 };
 
 const FormLogin = () => {
+
+
+  let iconsArray = [IoRose,GiAmpleDress,FiHeart];
   
   const port = process.env.NEXT_PUBLIC_PORT;
 
@@ -18,10 +26,20 @@ const FormLogin = () => {
   const [form, setForm] = useState(guestForm);
   const [allGuests, setAllGuest] = useState(["sin datos"]);
   const [showPassword, setShowPassword] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(currentIndex => (currentIndex + 1) % iconsArray.length) // Cambia de icono cada segundo
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
+  
   useEffect(() => {
     getGuests();
-  }, []);
+ }, []);
+
 
   const getGuests = async () => {
     await axios
@@ -101,9 +119,7 @@ const FormLogin = () => {
           </form>
         </div>
       ) : (
-        <div className={styles.container}>
-          <div className={styles.spinner} />
-        </div>
+        <Loading currentIndex={currentIndex} iconsArray={iconsArray}/>
       )}
     </div>
   );
