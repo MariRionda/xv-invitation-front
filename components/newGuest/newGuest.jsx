@@ -62,7 +62,6 @@ const NewGuest = () => {
         console.error(error);
       });
   };
-
   const handleChange = (e) => {
     e.preventDefault();
     setGuest({
@@ -70,7 +69,6 @@ const NewGuest = () => {
       [e.target.name]: e.target.value,
     });
   };
-
   const handleDelete = () => {
     Swal.fire({
       html: `
@@ -104,7 +102,6 @@ const NewGuest = () => {
         createToast("error", "No se pudo eliminar");
       });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!guest.lastname) {
@@ -135,8 +132,9 @@ const NewGuest = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.inputWrapper}>
+      <div className={styles.topPage}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.title}>Cargar todos los invitados:</div>
           <label className={styles.label}>
             <p>Apellido:</p>
             <input
@@ -148,8 +146,6 @@ const NewGuest = () => {
               className={styles.input}
             />
           </label>
-        </div>
-        <div className={styles.inputWrapper}>
           <label className={styles.label}>
             <p>Nombre:</p>
             <input
@@ -161,8 +157,6 @@ const NewGuest = () => {
               className={styles.input}
             />
           </label>
-        </div>
-        <div className={styles.inputWrapper}>
           <label className={styles.label}>
             <p>Teléfono:</p>
             <input
@@ -174,8 +168,6 @@ const NewGuest = () => {
               className={styles.input}
             />
           </label>
-        </div>
-        <div className={styles.inputWrapper}>
           <label className={styles.label}>
             <p>Cantidad de invitados:</p>
             <input
@@ -187,11 +179,37 @@ const NewGuest = () => {
               className={styles.input}
             />
           </label>
+          <button type="submit" className={styles.submitButton}>
+            Agregar
+          </button>
+        </form>
+        <div className={styles.divButtons}>
+          <button
+            className={styles.button}
+            onClick={() => {
+              router.push("/invitation/demo");
+            }}
+          >
+           💌 Ver Invitación
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              router.push("/sendInvitations");
+            }}
+          >
+            📨 Enviar invitaciones
+          </button>
+          <button className={styles.button} onClick={handleDelete}>
+            🗑 Quitar un invitado
+          </button>
+          <button className={styles.button} onClick={() => {
+              router.push("/list");
+            }}>
+            👨‍👩‍👧‍👦Lista de confirmados
+          </button>
         </div>
-        <button type="submit" className={styles.button}>
-          Agregar
-        </button>
-      </form>
+      </div>
       <div className={styles.divList}>
         <div className={styles.listTitle}>Invitados</div>
         <div>
@@ -223,27 +241,6 @@ const NewGuest = () => {
               );
             })
           ) : null}
-        </div>
-        <div className={styles.divButtons}>
-          <button className={styles.button} onClick={handleDelete}>
-            Quitar un invitado
-          </button>
-          <button
-            className={styles.button}
-            onClick={() => {
-              router.push("/invitation/demo");
-            }}
-          >
-            Ver Invitación
-          </button>
-          <button
-            className={styles.button}
-            onClick={() => {
-              router.push("/sendInvitations");
-            }}
-          >
-            Enviar invitaciones
-          </button>
         </div>
       </div>
     </div>
