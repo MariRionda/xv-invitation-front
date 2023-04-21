@@ -113,7 +113,7 @@ const GuestsList = () => {
               </div>
             ) : null}
           </div>
-          <button>⏬ Descargar Lista</button>
+          <div className={styles.btn}>Descargar Lista</div>
         </div>
       ) : (
         <Loading currentIndex={currentIndex} iconsArray={iconsArray} />

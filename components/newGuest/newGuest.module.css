@@ -111,42 +111,34 @@
     font-size: 17px;
     height: 10px;
 }
-    
-    
-    
-    
-    
-    
-   
-    .List{
-        font-size: 15px;
-        text-align: left;
-    }
-    
-    
-    .ListSubTitle{
-        font-size: 15px;
-        text-align: left;
-        font-weight: bold;
-    }
-    .spinnerBox{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .spinner {
-        margin-top: 50px;
-        border: 4px solid rgba(0, 0, 0, 0.1);
-        border-left-color: #333;
-        border-radius: 50%;
-        width: 2rem;
-        height: 2rem;
-        animation: spin 1s linear infinite;
-      }
-      
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+.List{
+    font-size: 15px;
+    text-align: left;
+}
+
+
+.ListSubTitle{
+    font-size: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+.spinnerBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.spinner {
+    margin-top: 50px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #333;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+to {
+    transform: rotate(360deg);
+}
+}
