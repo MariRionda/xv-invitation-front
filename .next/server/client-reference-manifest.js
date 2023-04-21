@@ -104,53 +104,27 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./components/newGuest/newGuest.jsx": {
+    "(app-client)/./components/guestsList/guestsList.jsx": {
       "*": {
-        "id": "(sc_client)/./components/newGuest/newGuest.jsx",
+        "id": "(sc_client)/./components/guestsList/guestsList.jsx",
         "chunks": [
-          "app/createGuests/page:app/createGuests/page"
+          "app/list/page:app/list/page"
         ],
         "name": "*",
         "async": false
       },
       "": {
-        "id": "(sc_client)/./components/newGuest/newGuest.jsx",
+        "id": "(sc_client)/./components/guestsList/guestsList.jsx",
         "chunks": [
-          "app/createGuests/page:app/createGuests/page"
+          "app/list/page:app/list/page"
         ],
         "name": "",
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./components/newGuest/newGuest.jsx",
+        "id": "(sc_client)/./components/guestsList/guestsList.jsx",
         "chunks": [
-          "app/createGuests/page:app/createGuests/page"
-        ],
-        "name": "default",
-        "async": false
-      }
-    },
-    "(app-client)/./components/formLogin/formLogin.jsx": {
-      "*": {
-        "id": "(sc_client)/./components/formLogin/formLogin.jsx",
-        "chunks": [
-          "app/page:app/page"
-        ],
-        "name": "*",
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./components/formLogin/formLogin.jsx",
-        "chunks": [
-          "app/page:app/page"
-        ],
-        "name": "",
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./components/formLogin/formLogin.jsx",
-        "chunks": [
-          "app/page:app/page"
+          "app/list/page:app/list/page"
         ],
         "name": "default",
         "async": false
@@ -159,11 +133,8 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
-    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\createGuests\\page": [
-      "static/css/app/createGuests/page.css"
-    ],
-    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\page": [
-      "static/css/app/page.css"
+    "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\list\\page": [
+      "static/css/app/list/page.css"
     ],
     "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\app\\layout": [
       "static/css/_app-client_styles_globals_modules_css.css"
@@ -361,71 +332,47 @@ self.__RSC_MANIFEST={
     "name": "default",
     "async": false
   },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.module.css#": {
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\guestsList\\guestsList.module.css#": {
     "id": "null",
     "name": "",
     "chunks": [
-      "static/css/app/createGuests/page.css"
-    ]
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.jsx": {
-    "id": "(app-client)/./components/newGuest/newGuest.jsx",
-    "chunks": [
-      "app/createGuests/page:app/createGuests/page"
-    ],
-    "name": "*",
-    "async": false
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.jsx#": {
-    "id": "(app-client)/./components/newGuest/newGuest.jsx",
-    "chunks": [
-      "app/createGuests/page:app/createGuests/page"
-    ],
-    "name": "",
-    "async": false
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\newGuest\\newGuest.jsx#default": {
-    "id": "(app-client)/./components/newGuest/newGuest.jsx",
-    "chunks": [
-      "app/createGuests/page:app/createGuests/page"
-    ],
-    "name": "default",
-    "async": false
-  },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.module.css#": {
-    "id": "null",
-    "name": "",
-    "chunks": [
-      "static/css/app/page.css"
+      "static/css/app/list/page.css"
     ]
   },
   "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\loading\\loading.module.css#": {
     "id": "null",
     "name": "",
     "chunks": [
-      "static/css/app/page.css"
+      "static/css/app/list/page.css"
     ]
   },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.jsx": {
-    "id": "(app-client)/./components/formLogin/formLogin.jsx",
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\whereButton\\whereButton.module.css#": {
+    "id": "null",
+    "name": "",
     "chunks": [
-      "app/page:app/page"
+      "static/css/app/list/page.css"
+    ]
+  },
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\guestsList\\guestsList.jsx": {
+    "id": "(app-client)/./components/guestsList/guestsList.jsx",
+    "chunks": [
+      "app/list/page:app/list/page"
     ],
     "name": "*",
     "async": false
   },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.jsx#": {
-    "id": "(app-client)/./components/formLogin/formLogin.jsx",
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\guestsList\\guestsList.jsx#": {
+    "id": "(app-client)/./components/guestsList/guestsList.jsx",
     "chunks": [
-      "app/page:app/page"
+      "app/list/page:app/list/page"
     ],
     "name": "",
     "async": false
   },
-  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\formLogin\\formLogin.jsx#default": {
-    "id": "(app-client)/./components/formLogin/formLogin.jsx",
+  "E:\\MARI\\DR full code\\PROYECTOS\\Invitations\\xv-invitation\\xv-invitation-front\\components\\guestsList\\guestsList.jsx#default": {
+    "id": "(app-client)/./components/guestsList/guestsList.jsx",
     "chunks": [
-      "app/page:app/page"
+      "app/list/page:app/list/page"
     ],
     "name": "default",
     "async": false
