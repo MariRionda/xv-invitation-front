@@ -70,14 +70,14 @@ const FormLogin = () => {
       router.push("/createGuests");
       createToast(
         "success",
-        "Bienvenido Eusebio, ya puedes cargar todos tus invitados"
+        "Bienvenido Eusebio"
       );
     } else if (form.code === "xvgiovaM") {
       window.sessionStorage.setItem("authenticated", true);
       router.push("/createGuests");
       createToast(
         "success",
-        "Bienvenida Giova, ya puedes cargar todos tus invitados"
+        "Bienvenida Giova"
       );
     } else if (Match(allGuests, form.code)[0]) {
       let guestName = Match(allGuests, form.code)[1];
