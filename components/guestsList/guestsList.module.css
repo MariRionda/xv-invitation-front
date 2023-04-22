@@ -19,9 +19,9 @@
     font-weight: bolder;
 }
 .list{
-    width: 40%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
 }
 .subTitle{
