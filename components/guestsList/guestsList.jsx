@@ -6,8 +6,8 @@ import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";
 import styles from "./guestsList.module.css";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDFList from "../pdfList/pdfList";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
+// import PDFList from "../pdfList/pdfList";
 
 const GuestsList = () => {
   let iconsArray = [IoRose, GiAmpleDress, FiHeart];
@@ -114,13 +114,13 @@ const GuestsList = () => {
               </div>
             ) : null}
           </div>
-          <PDFDownloadLink
-            style={{ textDecoration: "none" }}
-            document={<PDFList attend={attend} />}
-            fileName={"Lista de Confirmados - Quince Giovana"}
-          >
-            <div className={styles.btn}>Descargara lista</div>
-          </PDFDownloadLink>
+//           <PDFDownloadLink
+//             style={{ textDecoration: "none" }}
+//             document={<PDFList attend={attend} />}
+//             fileName={"Lista de Confirmados - Quince Giovana"}
+//           >
+//             <div className={styles.btn}>Descargara lista</div>
+//           </PDFDownloadLink>
         </div>
       ) : (
         <Loading currentIndex={currentIndex} iconsArray={iconsArray} />
