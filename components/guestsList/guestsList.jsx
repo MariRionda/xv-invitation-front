@@ -5,8 +5,9 @@ import Loading from "../loading/loading";
 import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";
-import styles from './guestsList.module.css'
-import WhereButton from "../whereButton/whereButton";
+import styles from "./guestsList.module.css";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PDFList from "../pdfList/pdfList";
 
 const GuestsList = () => {
   let iconsArray = [IoRose, GiAmpleDress, FiHeart];
@@ -74,7 +75,7 @@ const GuestsList = () => {
       notAttend[0] !== "sin datos" &&
       notConfirm[0] !== "sin datos" ? (
         <div className={styles.guestsList}>
-          <div className={styles. title}>👨‍👩‍👧‍👦Tus Invitados:</div>
+          <div className={styles.title}>👨‍👩‍👧‍👦Tus Invitados:</div>
           <div className={styles.list}>
             {attend.length ? (
               <div>
@@ -113,7 +114,13 @@ const GuestsList = () => {
               </div>
             ) : null}
           </div>
-          <div className={styles.btn}>Descargar Lista</div>
+          <PDFDownloadLink
+            style={{ textDecoration: "none" }}
+            document={<PDFList attend={attend} />}
+            fileName={"Lista de Confirmados - Quince Giovana"}
+          >
+            <div className={styles.btn}>Descargara lista</div>
+          </PDFDownloadLink>
         </div>
       ) : (
         <Loading currentIndex={currentIndex} iconsArray={iconsArray} />
