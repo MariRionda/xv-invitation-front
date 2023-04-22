@@ -14,10 +14,10 @@ import Footer from "../footer/footer";
 const InvitationProtected = ({ name }) => {
   const port = process.env.NEXT_PUBLIC_PORT;
 
-  let closingDate = new Date("2023-04-22").getTime();
+  let closingDate = new Date("2023-04-25").getTime();
   let currentDate = new Date().getTime();
 
-  const guestName = name.split("%20");
+  const guestName = name.replaceAll("%20", " ");
 
   const router = useRouter();
 
@@ -47,9 +47,9 @@ const InvitationProtected = ({ name }) => {
 
   const getGuest = async () => {
     await axios
-      .get(`${port}/guest/${guestName[0] + "-" + guestName[1]}`)
+      .get(`${port}/guest/name/${guestName}`)
       .then((response) => {
-        setGuest(response.data);
+        setGuest(response.data[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -230,7 +230,7 @@ const InvitationProtected = ({ name }) => {
         <div className={styles.sec}>
           <div className={styles.subtitle}>Día</div>
           <div className={styles.text}>Sábado 29 de abril - 22hs</div>
-          <WhereButton title={'AGENDAR'} click={scheduleEvent}/>  
+          <WhereButton title={"AGENDAR"} click={scheduleEvent} />
         </div>
         <div className={styles.sec}>
           <div className={styles.subtitle}>Lugar</div>
@@ -256,11 +256,11 @@ const InvitationProtected = ({ name }) => {
           >{`Invitación válida para ${guest.amount_guests} personas`}</div>
         </div>
         <WhereButton title={"CONFIRMAR ASISTENCIA"} click={handleAttend} />
-        <div>{"(Confirmar antes del 22/04/2023)"}</div>
+        <div>{"(Confirmar antes del 25/04/2023)"}</div>
         <WhereButton title={"No Asistiré"} click={handleNotAttend} />
       </section>
       <Music />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
