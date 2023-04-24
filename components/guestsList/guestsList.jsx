@@ -6,8 +6,8 @@ import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";
 import styles from "./guestsList.module.css";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDFList from "./pdfList";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
+// import PDFList from "./pdfList";
 
 const GuestsList = () => {
   let iconsArray = [IoRose, GiAmpleDress, FiHeart];
@@ -83,7 +83,7 @@ const GuestsList = () => {
                 {attend.map((a, i) => {
                   return (
                     <div className={styles.name} key={i}>
-                      - {a.lastname} {a.firstname}
+                      {i+1}- {a.lastname} {a.firstname} {a.amount_confirm > 1 ? ` -(${a.amount_confirm})` : null}
                     </div>
                   );
                 })}
@@ -95,7 +95,7 @@ const GuestsList = () => {
                 {notAttend.map((a, i) => {
                   return (
                     <div className={styles.name} key={i}>
-                      - {a.lastname} {a.firstname}
+                      {i+1}- {a.lastname} {a.firstname}
                     </div>
                   );
                 })}
@@ -107,20 +107,20 @@ const GuestsList = () => {
                 {notConfirm.map((a, i) => {
                   return (
                     <div className={styles.name} key={i}>
-                      - {a.lastname} {a.firstname}
+                      {i+1}- {a.lastname} {a.firstname}
                     </div>
                   );
                 })}
               </div>
             ) : null}
           </div>
-          <PDFDownloadLink
-            style={{ textDecoration: "none" }}
-            document={<PDFList attend={attend} />}
-            fileName={"Lista de Confirmados - Quince Giovana"}
-          >
-            <div className={styles.btn}>Descargara lista</div>
-          </PDFDownloadLink>
+//           <PDFDownloadLink
+//             style={{ textDecoration: "none" }}
+//             document={<PDFList attend={attend} />}
+//             fileName={"Lista de Confirmados - Quince Giovana"}
+//           >
+//             <div className={styles.btn}>Descargara lista</div>
+//           </PDFDownloadLink>
         </div>
       ) : (
         <Loading currentIndex={currentIndex} iconsArray={iconsArray} />
