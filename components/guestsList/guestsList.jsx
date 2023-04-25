@@ -1,13 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import Loading from "../loading/loading";
 import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";
 import styles from "./guestsList.module.css";
+import ListaInvitadosPDF from "./lista";
 
 const GuestsList = () => {
+  
   let iconsArray = [IoRose, GiAmpleDress, FiHeart];
 
   const port = process.env.NEXT_PUBLIC_PORT;
@@ -29,10 +32,6 @@ const GuestsList = () => {
     getGuestsNotAttend();
     getGuestsNotConfirm();
   }, []);
-
-  useEffect(() => {
-    console.log(attend);
-  }, [attend]);
 
   const getGuestsAttend = async () => {
     await axios
@@ -67,6 +66,8 @@ const GuestsList = () => {
       });
   };
 
+ 
+
   return (
     <div className={styles.container}>
       {attend[0] !== "sin datos" &&
@@ -81,7 +82,7 @@ const GuestsList = () => {
                 {attend.map((a, i) => {
                   return (
                     <div className={styles.name} key={i}>
-                      {i+1}- {a.lastname} {a.firstname} {a.amount_confirm > 1 ? ` -(${a.amount_confirm})` : null}
+                      {i+1}- {a.lastname} {a.firstname} {a.amount_confirm>1? `- (${a.amount_confirm})`: null}
                     </div>
                   );
                 })}
@@ -112,6 +113,9 @@ const GuestsList = () => {
               </div>
             ) : null}
           </div>
+          <ListaInvitadosPDF
+            listaInvitados = {attend}
+          ></ListaInvitadosPDF>
         </div>
       ) : (
         <Loading currentIndex={currentIndex} iconsArray={iconsArray} />
