@@ -7,10 +7,10 @@ import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";
 import styles from "./guestsList.module.css";
-import ListaInvitadosPDF from "./lista";
+import GuestsListPDF from "./list";
 
 const GuestsList = () => {
-  
+
   let iconsArray = [IoRose, GiAmpleDress, FiHeart];
 
   const port = process.env.NEXT_PUBLIC_PORT;
@@ -113,9 +113,9 @@ const GuestsList = () => {
               </div>
             ) : null}
           </div>
-          <ListaInvitadosPDF
-            listaInvitados = {attend}
-          ></ListaInvitadosPDF>
+          <GuestsListPDF
+            attend = {attend}
+          ></GuestsListPDF>
         </div>
       ) : (
         <Loading currentIndex={currentIndex} iconsArray={iconsArray} />
