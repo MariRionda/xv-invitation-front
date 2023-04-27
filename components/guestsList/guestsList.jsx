@@ -26,47 +26,27 @@ const GuestsList = () => {
     }, 500);
     return () => clearInterval(interval);
   }, [currentIndex]);
-
+  
+  let b = 0
   useEffect(() => {
-    getGuestsAttend();
-    getGuestsNotAttend();
-    getGuestsNotConfirm();
+    if(!b){
+    getGuestsList();
+    b=1
+  }
   }, []);
 
-  const getGuestsAttend = async () => {
+  const getGuestsList = async () => {
     await axios
-      .get(`${port}/guest/attend`)
+      .get(`${port}/guest/list`)
       .then((response) => {
-        setAttend(response.data);
+        setAttend(response.data.attend);
+        setNotAttend(response.data.not_attend);
+        setNotConfirm(response.data.not_confirm)
       })
       .catch((error) => {
         console.error(error);
       });
   };
-
-  const getGuestsNotAttend = async () => {
-    await axios
-      .get(`${port}/guest/notAttend`)
-      .then((response) => {
-        setNotAttend(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  const getGuestsNotConfirm = async () => {
-    await axios
-      .get(`${port}/guest/notConfirm`)
-      .then((response) => {
-        setNotConfirm(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
- 
 
   return (
     <div className={styles.container}>
