@@ -201,10 +201,10 @@ const NewGuest = () => {
         <div className={styles.listTitle}>Invitados</div>
         <div>
           <div className={styles.ListContainer}>
-            <div className={styles.ListSubTitle} style={{ width: "20px" }}>👥</div>
-            <div className={styles.ListSubTitle} style={{ width: "150px" }}>Nombre</div>
-            <div className={styles.ListSubTitle} style={{ width: "120px" }}>Telefono📲</div>
-            <div className={styles.ListSubTitle}>👨‍👩‍👧‍👦</div>
+            <div className={styles.ListSubTitleNum}>👥</div>
+            <div className={styles.ListSubTitleName}>Nombre</div>
+            <div className={styles.ListSubTitlePh}>Telefono📲</div>
+            <div className={styles.ListSubTitleNum}>👨‍👩‍👧‍👦</div>
           </div>
           {allGuests[0] == "sin datos" ? (
             <div className={styles.spinnerBox}>
@@ -214,16 +214,16 @@ const NewGuest = () => {
             allGuests.map((guest, i) => {
               return (
                 <div className={styles.ListContainer} key={i}>
-                  <div className={styles.List} style={{ width: "20px" }}>
+                  <div className={styles.ListNum}>
                     {i + 1}
                   </div>
-                  <div className={styles.List} style={{ width: "150px" }}>
+                  <div className={styles.ListName}>
                     ✔️{guest.lastname} {guest.firstname}
                   </div>
-                  <div className={styles.List} style={{ width: "120px" }}>
+                  <div className={styles.ListPh}>
                     {guest.phone}{" "}
                   </div>
-                  <div className={styles.List}>{guest.amount_guests} </div>
+                  <div className={styles.ListNum}>{guest.amount_guests} </div>
                 </div>
               );
             })
