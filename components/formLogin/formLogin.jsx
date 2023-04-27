@@ -39,7 +39,7 @@ const FormLogin = () => {
   useEffect(() => {
     setTimeout(()=>{
       getGuests();
-    }, 2000)
+    }, 1000)
     
  }, []);
 
