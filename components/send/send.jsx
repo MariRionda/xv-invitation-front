@@ -1,59 +1,44 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import styles from "./send.module.css";
-import { encrypted, getGuests } from "../usefulFunctions/usefulFunctions";
+import { encrypted } from "../usefulFunctions/usefulFunctions";
 import Loading from "../loading/loading";
-import { IoRose } from 'react-icons/io5';
-import { GiAmpleDress } from 'react-icons/gi';
-import { FiHeart } from 'react-icons/fi';
+import { IoRose } from "react-icons/io5";
+import { GiAmpleDress } from "react-icons/gi";
+import { FiHeart } from "react-icons/fi";
+import useStore from "../../store/store";
+
 
 const Send = () => {
-
-  let iconsArray = [IoRose,GiAmpleDress,FiHeart];
+  let iconsArray = [IoRose, GiAmpleDress, FiHeart];
 
   const router = useRouter();
 
-  const port = process.env.NEXT_PUBLIC_PORT;
+  const allGuestsStore = useStore((state) => state.allGuests);
+  const getGuests = useStore(state => state.getGuests);
 
+  console.log(allGuestsStore);
+  
   const link = "https://xv-invitation-front.vercel.app/";
 
   const [code, setCode] = useState("");
   const [guest1, setGuest1] = useState({});
   const [guest2, setGuest2] = useState({});
-  const [allGuests, setAllGuest] = useState(["sin datos"]);
-  const [guests, setGuests] = useState([]);
-  const [family, setFamily] = useState([]);
+  const [Guests, setAllGuest] = useState(allGuestsStore);
+  const [guests, setGuests] = useState(allGuestsStore);
+  const [family, setFamily] = useState(allGuestsStore);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(currentIndex => (currentIndex + 1) % iconsArray.length) // Cambia de icono cada segundo
-    }, 500);
-    return () => clearInterval(interval);
-  }, [currentIndex]);
 
-  //FUNCION PARA TRAER TODOS LOS INVITADOS
-  const getGuests = async () => {
-    await axios
-      .get(`${port}/guest/all`)
-      .then((response) => {
-        setAllGuest(response.data);
-        setFamily(response.data.filter((g) => g.amount_guests > 1));
-        setGuests(response.data.filter((g) => g.amount_guests === 1));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   useEffect(() => {
     const authenticated = window.sessionStorage.getItem("authenticated");
     if (!authenticated) {
       router.push("/");
     }
-    getGuests();
+    if(Guests[0]==="sin datos"){
+      getGuests()
+    }
   }, []);
 
   function handleSelectGuests(e) {
@@ -88,7 +73,7 @@ const Send = () => {
 
   return (
     <div>
-      {allGuests[0] !== "sin datos" ? (
+      {Guests[0] !== "sin datos" ? (
         <div>
           <div className={styles.container}>
             <form onSubmit={handleSubmitGuests} className={styles.form}>
@@ -134,7 +119,7 @@ const Send = () => {
           </div>
         </div>
       ) : (
-        <Loading currentIndex={currentIndex} iconsArray={iconsArray}/>
+        <Loading currentIndex={currentIndex} iconsArray={iconsArray} />
       )}
     </div>
   );

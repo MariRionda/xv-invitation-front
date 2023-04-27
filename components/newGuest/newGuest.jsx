@@ -1,10 +1,11 @@
-"use client";
+"use client"
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./newGuest.module.css";
 import Swal from "sweetalert2";
 import { createToast } from "../usefulFunctions/usefulFunctions";
+import useStore from "../../store/store";
 
 const guestData = {
   lastname: "",
@@ -16,12 +17,17 @@ const guestData = {
 };
 
 const NewGuest = () => {
-  const port = process.env.NEXT_PUBLIC_PORT;
 
   const router = useRouter();
 
+  const port = process.env.NEXT_PUBLIC_PORT;
+
+  const allGuestsStore = useStore((state) => state.allGuests);
+
+  const getGuests = useStore((state) => state.getGuests);
+
   const [guest, setGuest] = useState(guestData);
-  const [allGuests, setAllGuest] = useState(["sin datos"]);
+  const [allGuests, setAllGuest] = useState(allGuestsStore);
 
   useEffect(() => {
     const authenticated = window.sessionStorage.getItem("authenticated");
@@ -29,57 +35,51 @@ const NewGuest = () => {
       router.push("/");
     }
     getGuests();
-  }, [guest]);
+  }, []);
+
+  useEffect(() => {
+    setAllGuest(allGuestsStore);
+  }, [allGuestsStore]);
 
   const sendData = async (guest) => {
-    await axios
-      .post(`${port}/guest`, guest)
-      .then((response) => {
-        createToast("success", response.data.msg);
-        setGuest(guestData);
-      })
-      .catch((error) => {
-        createToast("error", response.data.msg);
-      });
+    try {
+      const response = await axios.post(`${port}/guest`, guest);
+      createToast("success", response.data.msg);
+      setGuest(guestData);
+    } catch (error) {
+      createToast("error", error.response.data.msg);
+    }
   };
-  const getGuests = async () => {
-    await axios
-      .get(`${port}/guest/all`)
-      .then((response) => {
-        setAllGuest(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+
   const deleteGuests = async (id) => {
-    await axios
-      .delete(`${port}/guest/${id}`)
-      .then((response) => {
-        setAllGuest(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      await axios.delete(`${port}/guest/${id}`);
+      getGuests();
+      createToast("success", "Invitado eliminado correctamente");
+    } catch (error) {
+      console.error(error);
+      createToast("error", "No se pudo eliminar");
+    }
   };
+
   const handleChange = (e) => {
-    e.preventDefault();
     setGuest({
       ...guest,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleDelete = () => {
     Swal.fire({
       html: `
         <div>
-        <h1 style="font-size: 17px;">Eliminar invitado</h1>
-        <select id="guest-select" class="swal2-input" style="font-size: 15px;">
-          ${allGuests?.map(
-            (guest) =>
-              `<option value="${guest.id}">${guest.lastname} ${guest.firstname}</option>`
-          )}
-        </select>
+          <h1 style="font-size: 17px;">Eliminar invitado</h1>
+          <select id="guest-select" class="swal2-input" style="font-size: 15px;">
+            ${allGuests?.map(
+              (guest) =>
+                `<option value="${guest.id}">${guest.lastname} ${guest.firstname}</option>`
+            )}
+          </select>
         </div>
       `,
       showCancelButton: true,
@@ -87,47 +87,31 @@ const NewGuest = () => {
       cancelButtonText: "Cancelar",
       confirmButtonColor: "#e7c6c6",
       cancelButtonColor: "#c7b6d7",
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          const selectedGuestId = document.getElementById("guest-select").value;
-          deleteGuests(selectedGuestId.toString(""))
-            // Aquí eliminarías el invitado seleccionado por ID
-            .then(() => {
-              createToast("success", "Invitado eliminado correctamente");
-            });
-        }
-      })
-      .catch(() => {
-        createToast("error", "No se pudo eliminar");
-      });
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const selectedGuestId = document.getElementById("guest-select").value;
+        deleteGuests(selectedGuestId.toString(""));
+      }
+    });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!guest.lastname) {
-      createToast("error", "Debe introducir apellido");
+    const { lastname, firstname, phone, amount_guests } = guest;
+    if (!lastname || !firstname || !phone || !amount_guests) {
+      createToast("error", "Debe completar todos los campos");
       return;
     }
-    if (!guest.firstname) {
-      createToast("error", "Debe introducir nombre");
+    if (phone.length !== 10) {
+      createToast("error", "Debe introducir un teléfono válido");
       return;
     }
-    if (!guest.phone) {
-      createToast("error", "Debe introducir teléfono");
-      return;
-    }
-    if (!guest.amount_guests) {
-      createToast("error", "Debe introducir cantidad de invitados");
-      return;
-    }
-    if (guest.phone.length !== 10) {
-      createToast("error", "Debe introducir teléfono válido");
-      return;
-    }
-    guest.lastname = guest.lastname.trim();
-    guest.firstname = guest.firstname.trim();
-    guest.phone = "+549" + guest.phone;
-    sendData(guest);
+    sendData({
+      ...guest,
+      lastname: lastname.trim(),
+      firstname: firstname.trim(),
+      phone: "+549" + phone,
+    });
   };
 
   return (
