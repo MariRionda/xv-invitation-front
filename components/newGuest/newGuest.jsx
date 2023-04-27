@@ -34,7 +34,9 @@ const NewGuest = () => {
     if (!authenticated) {
       router.push("/");
     }
+    if(allGuestsStore[0]==="sin datos"){
     getGuests();
+    }
   }, []);
 
   useEffect(() => {
@@ -46,6 +48,7 @@ const NewGuest = () => {
       const response = await axios.post(`${port}/guest`, guest);
       createToast("success", response.data.msg);
       setGuest(guestData);
+      getGuests();
     } catch (error) {
       createToast("error", error.response.data.msg);
     }

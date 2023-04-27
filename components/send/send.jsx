@@ -17,8 +17,6 @@ const Send = () => {
 
   const allGuestsStore = useStore((state) => state.allGuests);
   const getGuests = useStore(state => state.getGuests);
-
-  console.log(allGuestsStore);
   
   const link = "https://xv-invitation-front.vercel.app/";
 

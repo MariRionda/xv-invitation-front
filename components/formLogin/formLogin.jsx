@@ -17,8 +17,12 @@ const FormLogin = () => {
   
   const getGuests = useStore(state => state.getGuests);
 
+  let b=0
   useEffect(() => {
-    getGuests();
+    if(!b){
+      getGuests();
+      b=1
+      }
   }, []);
 
   const allGuests = useStore((state) => state.allGuests);
