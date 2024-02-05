@@ -1,4 +1,4 @@
-import GuestsList from "../../components/guestsList/guestsList"
+import GuestsList from "../../features/guestsList/guestsList"
 
 const List = ()=>{
     return(

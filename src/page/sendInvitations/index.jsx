@@ -1,4 +1,4 @@
-import Send from "../../components/send/send"
+import Send from "../../features/send/send"
 
 const sendInvitations = () => {
     return(

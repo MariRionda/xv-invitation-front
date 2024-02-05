@@ -4,12 +4,12 @@ import { useEffect, useState, useRef } from "react";
 import Countdown from "../../components/countDown/countDown";
 import Music from "../../components/musicButton/musicButton";
 import styles from "./invitationProtected.module.css";
-import NavBar from "../navBar/navBar";
-import WhereButton from "../whereButton/whereButton";
+import NavBar from "../../components/navBar/navBar";
+import WhereButton from "../../components/whereButton/whereButton";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { createToast } from "../usefulFunctions/usefulFunctions";
-import Footer from "../footer/footer";
+import { createToast } from "../../components/usefulFunctions/usefulFunctions";
+import Footer from "../../components/footer/footer";
 
 const InvitationProtected = ({ name }) => {
   const port = process.env.NEXT_PUBLIC_PORT;

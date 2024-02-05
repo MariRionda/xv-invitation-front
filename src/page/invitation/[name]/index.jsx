@@ -1,4 +1,4 @@
-import InvitationProtected from '../../../components/invitationProtected/invitationProtected'
+import InvitationProtected from '../../../features/invitationProtected/invitationProtected'
 
 const Invitation = ({params}) => {
   const {name} = params

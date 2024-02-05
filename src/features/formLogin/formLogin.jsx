@@ -2,12 +2,12 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./formLogin.module.css";
-import { Match, createToast } from "../usefulFunctions/usefulFunctions";
-import Loading from "../loading/loading";
+import { Match, createToast } from "../../components/usefulFunctions/usefulFunctions";
+import Loading from "../../components/loading/loading";
 import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";
-import useStore from "../../store/store";
+import useStore from "../../../store/store";
 
 const guestForm = {
   code: "",

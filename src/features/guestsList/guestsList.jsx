@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import Loading from "../loading/loading";
+import Loading from "../../components/loading/loading";
 import { IoRose } from "react-icons/io5";
 import { GiAmpleDress } from "react-icons/gi";
 import { FiHeart } from "react-icons/fi";

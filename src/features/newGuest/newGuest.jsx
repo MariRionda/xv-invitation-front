@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./newGuest.module.css";
 import Swal from "sweetalert2";
-import { createToast } from "../usefulFunctions/usefulFunctions";
-import useStore from "../../store/store";
+import { createToast } from "../../components/usefulFunctions/usefulFunctions";
+import useStore from "../../../store/store";
 
 const guestData = {
   lastname: "",
